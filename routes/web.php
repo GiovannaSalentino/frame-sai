@@ -1,14 +1,25 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TransparencyPrincipleController;
+
 use App\Http\Controllers\LibraryPrinciplesController;
 use App\Http\Controllers\DesignPatternController;
 use App\Http\Controllers\GuidelinesController;
 use App\Http\Controllers\SuccessCriteriaController;
 use App\Http\Controllers\Dp1Controller;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PrincipleController;
+use App\Http\Controllers\DesignPatternDetailController;
 
+
+
+Route::get('/design-pattern/{pattern}', [DesignPatternDetailController::class, 'show'])
+    ->where('pattern', '1|2')
+    ->name('design-pattern.show');
+
+Route::get('/principles/{principle}', [PrincipleController::class, 'show'])
+    ->where('principle', 'transparency|fairness|automation-level|protection')
+    ->name('principles.show');
 
 Route::get('/design-pattern/dp1', [Dp1Controller::class, 'index'])
     ->name('design-pattern.dp1');
@@ -28,5 +39,3 @@ Route::get('/library-principles', [LibraryPrinciplesController::class, 'index'])
 Route::get('/', [HomeController::class, 'index'])
     ->name('home');
 
-Route::get('/principio-trasparenza', [TransparencyPrincipleController::class, 'index'])
-    ->name('principio-trasparenza');
