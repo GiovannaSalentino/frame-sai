@@ -10,6 +10,62 @@
 </head>
 
 <body class="m-0 bg-white text-black">
+
+@php
+    $patternsContent = [
+        'D.P. 1' => [
+            'problem' => 'Allow users to supervise the behavior of the system.',
+
+            'suggestion' => 'Enable users to oversee its decision-making process by allowing them to check, monitor, and supervise its behavior and output. This can be ensured through the implementation of proper mechanisms that make the processes and architecture transparent to users.',
+
+            'solution' => [
+                'Implement one or more explainability techniques that present the motivations behind the response of the model.',
+                'The explanation must be catered to the expertise and background of the target audience.',
+                'Implement interpretability strategies that allow the user to understand the logical structure of the model, if needed.',
+            ],
+
+            'context' => 'Users must know the reasons behind the output and understand its meaning, even if they do not intend to reconfigure the model.',
+
+            'examples' => 'The “Grad-CAM” visual explanations for images and SHAP for interpreting the model’s logic and feature importance.',
+
+            'example_image' => null,
+            'example_caption' => null,
+        ],
+
+        'D.P. 2' => [
+            'problem' => 'Enable users to form their own judgment of the model’s response.',
+
+            'suggestion' => 'Provide an overview of the structure of the model that powers the system, or textually describe how its functioning works.',
+
+            'solution' => [
+                'Add “Info” options to the user interface to let users learn more about the structure of the model.',
+                'Provide a visual representation of the structure of the model, accompanied by a caption that describes it.',
+                'Provide this information on demand, since users should not be overloaded with information that might not be relevant to everybody.',
+            ],
+
+            'context' => 'At any level of risk, humans must be made aware of the structure of the model that powers the system they are using, as well as how their data is treated when interacting with the system. The motivation behind this lies in preventing users from perceiving AI-based systems as “magic boxes” that possess the answers to anything.',
+
+            'examples' => 'A “How Does It Work?” button can provide users with additional information. After clicking it, a pop-up explains how the model works and how an explainability output is produced.',
+
+            'example_image' => 'img/dp2-how-does-it-work.png',
+            'example_caption' => 'Figure 1: Pop-Up shown after clicking on “How Does It Work?”',
+        ],
+    ];
+
+    $content = $patternsContent[$pattern['code']] ?? [
+        'problem' => '',
+        'suggestion' => '',
+        'solution' => [],
+        'context' => '',
+        'examples' => '',
+        'example_image' => null,
+        'example_caption' => null,
+    ];
+
+    $exampleImageExists = $content['example_image']
+        && file_exists(public_path($content['example_image']));
+@endphp
+
 <div class="flex min-h-screen min-w-[1180px] bg-white">
 
     {{-- SIDEBAR --}}
@@ -35,8 +91,9 @@
 
                 <span
                     class="bg-gradient-to-r from-[#ff2f92] via-[#635bff]
-                           to-[#00c2ff] bg-clip-text font-['Work_Sans']
-                           text-[26px] leading-none text-transparent"
+                           to-[#00c2ff] bg-clip-text
+                           font-['Work_Sans-Regular'] text-[26px]
+                           leading-none text-transparent"
                 >
                     FrameSAI
                 </span>
@@ -55,10 +112,9 @@
                         <img
                             src="{{ asset('img/homepage.png') }}"
                             alt=""
-                            class="mb-[7px] block h-[36px] w-[36px]"
+                            class="mb-[7px] h-[36px] w-[36px]"
                         >
-
-                        <span class="font-['Work_Sans'] text-[11px]">
+                        <span class="font-['Work_Sans-Regular'] text-[11px]">
                             Homepage
                         </span>
                     </a>
@@ -73,10 +129,9 @@
                         <img
                             src="{{ asset('img/principles.png') }}"
                             alt=""
-                            class="mb-[7px] block h-[36px] w-[36px]"
+                            class="mb-[7px] h-[36px] w-[36px]"
                         >
-
-                        <span class="font-['Work_Sans'] text-[11px]">
+                        <span class="font-['Work_Sans-Regular'] text-[11px]">
                             Principles
                         </span>
                     </a>
@@ -91,10 +146,9 @@
                         <img
                             src="{{ asset('img/guidelines.png') }}"
                             alt=""
-                            class="mb-[7px] block h-[36px] w-[36px]"
+                            class="mb-[7px] h-[36px] w-[36px]"
                         >
-
-                        <span class="font-['Work_Sans'] text-[11px]">
+                        <span class="font-['Work_Sans-Regular'] text-[11px]">
                             Guidelines
                         </span>
                     </a>
@@ -109,10 +163,12 @@
                         <img
                             src="{{ asset('img/success-criteria.png') }}"
                             alt=""
-                            class="mb-[7px] block h-[36px] w-[36px]"
+                            class="mb-[7px] h-[36px] w-[36px]"
                         >
-
-                        <span class="px-[6px] text-center font-['Work_Sans'] text-[11px]">
+                        <span
+                            class="px-[6px] text-center
+                                   font-['Work_Sans-Regular'] text-[11px]"
+                        >
                             Success Criteria
                         </span>
                     </a>
@@ -129,10 +185,12 @@
                         <img
                             src="{{ asset('img/design-pattern.png') }}"
                             alt=""
-                            class="mb-[7px] block h-[36px] w-[36px]"
+                            class="mb-[7px] h-[36px] w-[36px]"
                         >
-
-                        <span class="px-[6px] text-center font-['Work_Sans'] text-[11px]">
+                        <span
+                            class="px-[6px] text-center
+                                   font-['Work_Sans-Regular'] text-[11px]"
+                        >
                             Design Pattern
                         </span>
                     </a>
@@ -143,172 +201,204 @@
     </aside>
 
     {{-- CONTENUTO --}}
-    <main class="relative z-10 min-h-screen flex-1 overflow-y-auto bg-white">
-        <div class="mx-auto w-full max-w-[1158px] px-[53px] pb-[70px] pt-[26px]">
+    <main class="min-h-screen flex-1 bg-white">
+        <div class="mx-auto w-full max-w-[1060px] px-[38px] pb-[60px] pt-[24px]">
 
             {{-- HEADER --}}
-            <header class="flex items-center gap-[14px]">
+            <header class="flex items-center gap-[12px]">
 
-                
                 <a
-    href="{{ route('design-pattern') }}"
-    class="flex h-[28px] w-[28px] shrink-0 items-center
-           justify-center rounded-[4px] text-black
-           focus-visible:outline focus-visible:outline-2
-           focus-visible:outline-offset-2
-           focus-visible:outline-[#4a90e2]"
-    aria-label="Torna alla Design Pattern Library"
->
-    <svg
-        viewBox="0 0 25 17"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        class="h-[17px] w-[25px]"
-        aria-hidden="true"
-    >
-        <path
-            d="M24 8.5H1.5"
-            stroke="black"
-            stroke-width="2"
-            stroke-linecap="round"
-        />
-
-        <path
-            d="M8.5 1.5L1.5 8.5L8.5 15.5"
-            stroke="black"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-        />
-    </svg>
-</a>
-
-                <div
-                    class="flex h-[43px] w-[49px] shrink-0 items-center
-                           justify-center text-[38px] text-[#b48ac4]"
-                    aria-hidden="true"
+                    href="{{ route('design-pattern') }}"
+                    class="flex h-[28px] w-[28px] shrink-0 items-center
+                           justify-center rounded-[4px] text-black
+                           focus-visible:outline focus-visible:outline-2
+                           focus-visible:outline-offset-2
+                           focus-visible:outline-[#4a90e2]"
+                    aria-label="Torna alla Design Pattern Library"
                 >
-                    &#9993;
-                </div>
+                    <svg
+                        viewBox="0 0 25 17"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-[17px] w-[25px]"
+                        aria-hidden="true"
+                    >
+                        <path
+                            d="M24 8.5H1.5"
+                            stroke="black"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                        />
+                        <path
+                            d="M8.5 1.5L1.5 8.5L8.5 15.5"
+                            stroke="black"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        />
+                    </svg>
+                </a>
 
-                {{-- CODICE DINAMICO --}}
+               <div class="relative h-[38px] w-[42px] shrink-0">
+    <img
+        src="{{ asset('img/carta-viola.png') }}"
+        alt=""
+        class="absolute left-1/2 top-1/2 h-[38px] w-[42px]
+               max-w-none -translate-x-1/2 -translate-y-1/2
+               scale-[2] object-contain"
+    >
+</div>
+
                 <span
-                    class="flex h-[36px] shrink-0 items-center rounded-[7px]
-                           bg-[#8e8e8e] px-[14px] font-['Work_Sans']
-                           text-[20px] text-white"
+                    class="flex h-[31px] shrink-0 items-center rounded-[6px]
+                           bg-[#8e8e8e] px-[11px]
+                           font-['Work_Sans-Regular'] text-[16px] text-white"
                 >
                     {{ $pattern['code'] }}
                 </span>
 
-                <div class="ml-[2px] flex min-w-0 flex-col">
-
-                    {{-- TITOLO DINAMICO --}}
+                <div class="min-w-0 flex-1">
                     <h1
                         class="m-0 bg-gradient-to-r from-[#d6008f]
-                               via-[#5346d8] to-[#2e9fe6] bg-clip-text
-                               font-['Roboto_Slab'] text-[43px] font-bold
-                               leading-[48px] text-transparent"
+                               via-[#5346d8] to-[#2e9fe6]
+                               bg-clip-text font-['Roboto_Slab-Regular']
+                               text-[30px] font-bold leading-[36px]
+                               text-transparent"
                     >
                         {{ $pattern['title'] }}
                     </h1>
 
                     <div
-                        class="mt-[5px] h-[3px] w-[368px]
+                        class="mt-[4px] h-[3px] w-full max-w-[350px]
                                bg-gradient-to-r from-[#d6008f]
                                via-[#7f63dd] to-[#78d9ef]"
                     ></div>
                 </div>
             </header>
 
-            {{-- COLLEGAMENTI --}}
-            <section class="mt-[30px] max-w-[906px]">
-                <h2 class="mb-[18px] font-['Roboto_Slab'] text-[29px] font-normal">
+            <section class="mt-[27px] max-w-[850px]">
+                <h2
+                    class="mb-[15px] font-['Roboto_Slab-Regular']
+                           text-[23px] font-normal text-[#686868]"
+                >
                     Collegamenti
                 </h2>
 
                 {{-- PROBLEM --}}
                 <article
-                    class="relative mb-[14px] min-h-[52px]
-                           overflow-hidden rounded-[8px] bg-[#f3f3f3]"
+                    class="relative mb-[12px] overflow-hidden
+                           rounded-[7px] bg-[#f3f3f3]"
                 >
                     <div class="absolute inset-y-0 left-0 w-[4px] bg-[#ff0f7b]"></div>
 
-                    <div class="flex min-h-[52px] items-center px-[14px]">
+                    <div class="flex items-start gap-[10px] px-[15px] py-[14px]">
                         <span
-                            class="mr-[8px] h-[18px] w-[18px]
+                            class="mt-[4px] h-[13px] w-[13px]
                                    shrink-0 rounded-full bg-[#ff0f7b]"
                             aria-hidden="true"
                         ></span>
 
-                        <h3 class="font-['Roboto_Slab'] text-[27px] font-normal">
-                            Problem
-                        </h3>
-                    </div>
+                        <div>
+                            <h3
+                                class="m-0 font-['Roboto_Slab-Regular']
+                                       text-[20px] font-normal text-[#252525]"
+                            >
+                                Problem
+                            </h3>
 
-                    <div class="min-h-[65px] px-[20px] pb-[18px]">
-                        {{-- Inserisci qui il testo del problema --}}
+                            <p
+                                class="mb-0 mt-[8px]
+                                       font-['Work_Sans-Regular']
+                                       text-[15px] leading-[1.45] text-[#505050]"
+                            >
+                                {{ $content['problem'] }}
+                            </p>
+                        </div>
                     </div>
                 </article>
 
                 {{-- DESIGN SUGGESTION --}}
                 <article
-                    class="relative mb-[16px] min-h-[123px]
-                           overflow-hidden rounded-[8px] bg-[#f3f3f3]"
+                    class="relative mb-[12px] overflow-hidden
+                           rounded-[7px] bg-[#f3f3f3]"
                 >
                     <div class="absolute inset-y-0 left-0 w-[4px] bg-[#a000ff]"></div>
 
-                    <div class="flex min-h-[55px] items-center px-[14px]">
-                        <span
-                            class="mr-[9px] text-[32px] leading-none text-[#a000ff]"
+                    <div class="flex items-start gap-[10px] px-[15px] py-[14px]">
+
+                        {{-- Spazio per il futuro PNG Design Suggestion --}}
+                        <div
+                            class="h-[24px] w-[24px] shrink-0"
                             aria-hidden="true"
-                        >
-                            &#9881;
-                        </span>
+                        ></div>
 
-                        <h3 class="font-['Roboto_Slab'] text-[27px] font-normal">
-                            Design Suggestion
-                        </h3>
-                    </div>
+                        <div>
+                            <h3
+                                class="m-0 font-['Roboto_Slab-Regular']
+                                       text-[20px] font-normal text-[#252525]"
+                            >
+                                Design Suggestion
+                            </h3>
 
-                    <div class="min-h-[68px] px-[20px] pb-[18px]">
-                        {{-- Inserisci qui il testo del Design Suggestion --}}
+                            <p
+                                class="mb-0 mt-[8px]
+                                       font-['Work_Sans-Regular']
+                                       text-[15px] leading-[1.45] text-[#505050]"
+                            >
+                                {{ $content['suggestion'] }}
+                            </p>
+                        </div>
                     </div>
                 </article>
 
                 {{-- SOLUTION --}}
                 <article
-                    class="min-h-[211px] rounded-[8px]
-                           border border-[#61b0ff] bg-white"
+                    class="rounded-[7px] border border-[#61b0ff] bg-white"
                 >
-                    <div class="flex min-h-[58px] items-center px-[14px]">
-                        <span
-                            class="mr-[9px] text-[35px] leading-none"
+                    <div class="flex items-start gap-[10px] px-[15px] py-[14px]">
+
+                        {{-- Spazio per il futuro PNG Solution --}}
+                        <div
+                            class="h-[24px] w-[24px] shrink-0"
                             aria-hidden="true"
-                        >
-                            &#128161;
-                        </span>
+                        ></div>
 
-                        <h3 class="font-['Roboto_Slab'] text-[25px] font-bold">
-                            Solution
-                        </h3>
-                    </div>
+                        <div class="flex-1">
+                            <h3
+                                class="m-0 font-['Roboto_Slab-Regular']
+                                       text-[20px] font-bold text-[#252525]"
+                            >
+                                Solution
+                            </h3>
 
-                    <div class="min-h-[145px] px-[20px] pb-[20px]">
-                        {{-- Inserisci qui il testo della soluzione --}}
+                            <ul
+                                class="mb-0 mt-[10px] space-y-[7px]
+                                       pl-[20px] font-['Work_Sans-Regular']
+                                       text-[15px] leading-[1.45] text-[#505050]"
+                            >
+                                @foreach ($content['solution'] as $solution)
+                                    <li>{{ $solution }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
                     </div>
                 </article>
 
                 {{-- CONTEXT AND MOTIVATIONS --}}
-                <details class="group mt-[15px]">
+                <details
+                    class="group mt-[12px] overflow-hidden
+                           rounded-[7px] border border-[#dedede] bg-white"
+                >
                     <summary
                         class="flex cursor-pointer list-none items-center
-                               justify-between rounded-[6px] px-[11px]
-                               py-[8px] font-['Work_Sans'] text-[19px] font-bold"
+                               justify-between px-[15px] py-[12px]
+                               font-['Work_Sans-Regular']
+                               text-[16px] font-semibold text-[#333333]"
                     >
                         <span>Context and Motivations</span>
 
                         <svg
-                            class="h-[22px] w-[22px] text-[#686868]
+                            class="h-[20px] w-[20px] text-[#686868]
                                    transition-transform duration-200
                                    group-open:rotate-180"
                             viewBox="0 0 24 24"
@@ -322,35 +412,77 @@
                     </summary>
 
                     <div
-                        class="mx-[11px] mt-[8px] min-h-[100px]
-                               rounded-[6px] border border-[#d5d5d5]
-                               bg-[#f8f8f8] p-[16px]"
+                        class="border-t border-[#dedede]
+                               bg-[#f8f8f8] px-[15px] py-[14px]"
                     >
-                        {{-- Inserisci qui Context and Motivations --}}
+                        <p
+                            class="m-0 font-['Work_Sans-Regular']
+                                   text-[15px] leading-[1.45] text-[#505050]"
+                        >
+                            {{ $content['context'] }}
+                        </p>
                     </div>
                 </details>
 
                 {{-- EXAMPLES --}}
                 <article
-                    class="relative mt-[55px] min-h-[120px]
-                           overflow-hidden rounded-[8px] bg-[#f3f3f3]"
+                    class="relative mt-[18px] overflow-hidden
+                           rounded-[7px] bg-[#f3f3f3]"
                 >
                     <div class="absolute inset-y-0 left-0 w-[4px] bg-[#1f95f3]"></div>
 
-                    <div class="flex min-h-[45px] items-center px-[12px]">
-                        <span
-                            class="mr-[7px] h-[14px] w-[14px]
-                                   shrink-0 rounded-full bg-[#1f95f3]"
-                            aria-hidden="true"
-                        ></span>
+                    <div class="px-[17px] py-[14px]">
+                        <div class="flex items-center gap-[8px]">
+                            <span
+                                class="h-[12px] w-[12px]
+                                       shrink-0 rounded-full bg-[#1f95f3]"
+                                aria-hidden="true"
+                            ></span>
 
-                        <h3 class="font-['Roboto_Slab'] text-[20px] font-normal">
-                            Examples
-                        </h3>
-                    </div>
+                            <h3
+                                class="m-0 font-['Roboto_Slab-Regular']
+                                       text-[19px] font-normal text-[#252525]"
+                            >
+                                Examples
+                            </h3>
+                        </div>
 
-                    <div class="min-h-[70px] px-[20px] pb-[18px]">
-                        {{-- Inserisci qui gli esempi --}}
+                        <p
+                            class="mb-0 mt-[10px]
+                                   font-['Work_Sans-Regular']
+                                   text-[15px] leading-[1.45] text-[#505050]"
+                        >
+                            {{ $content['examples'] }}
+                        </p>
+
+                        @if ($content['example_image'])
+                            <figure class="m-0 mt-[18px]">
+
+                                @if ($exampleImageExists)
+                                    <img
+                                        src="{{ asset($content['example_image']) }}"
+                                        alt="Example for {{ $pattern['title'] }}"
+                                        class="block h-auto max-h-[420px] w-full
+                                               rounded-[6px] object-contain"
+                                    >
+                                @else
+                                    <div
+                                        class="h-[240px] w-full rounded-[6px]
+                                               border border-[#d5d5d5] bg-white"
+                                        aria-label="Spazio riservato all'immagine"
+                                    ></div>
+                                @endif
+
+                                <figcaption
+                                    class="mt-[8px] text-center
+                                           font-['Work_Sans-Regular']
+                                           text-[13px] leading-[1.35]
+                                           text-[#686868]"
+                                >
+                                    {{ $content['example_caption'] }}
+                                </figcaption>
+                            </figure>
+                        @endif
                     </div>
                 </article>
             </section>

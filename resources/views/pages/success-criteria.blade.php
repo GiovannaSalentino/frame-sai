@@ -95,7 +95,15 @@
     </svg>
 </a>
 
-                <img src="img/success-criteria-title.png" alt="" class="w-[44px] h-[44px] object-contain" />
+               <div class="relative h-[44px] w-[44px] shrink-0">
+    <img
+        src="{{ asset('img/tape-viola.png') }}"
+        alt=""
+        class="absolute left-1/2 top-1/2 h-[100px] w-[100px]
+               max-w-none -translate-x-1/2 -translate-y-1/2
+               scale-[2] object-contain"
+    >
+</div>
 
                 <div class="flex flex-col">
                     <h1 class="m-0 text-[28px] leading-[34px] font-normal font-['Roboto_Slab-Regular','Georgia',serif]">

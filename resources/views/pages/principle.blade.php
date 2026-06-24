@@ -10,11 +10,26 @@
 </head>
 
 <body class="m-0">
-<div class="flex min-h-[832px] min-w-[1280px] w-full border border-black bg-white text-[#5d5d5d]">
+@php
+    $descriptions = [
+        'transparency' => 'Transparency can guarantee that AI systems are effectively overseen by humans and allow intervention when potential harm occurs. Transparency ensures that critical information about how the AI model was trained and structured is available to humans, since stakeholders must understand how AI models function and the reasoning behind their decisions to be able to intervene. Being a multi-faceted property that concerns AI models, their components, and algorithms.',
+
+        'fairness' => 'Fairness reflects the concepts of equality and inclusiveness to avoid biases and discriminatory behaviors safeguarding fundamental human rights and values. An approach that considers humans as a whole is essential for ensuring that AI can contribute positively to society and protect them against potential harms.',
+
+        'automation-level' => 'As AI becomes increasingly integrated into countless aspects of human life, studying the appropriate balance between automation and human control in human-AI interactions is necessary. Although there are contexts of use in which humans need or wish for fully automated systems in which their control is not necessary, it is important to address the ethical and legal consequences of undesired events caused by AI systems’ outputs.',
+
+        'protection' => 'The human-centric approach undertaken by the AI Act aims at ensuring that users are safeguarded against harm, threats, or intrusion. This principle is strongly intertwined with the legal requirements set by governmental norms and rules that designers, developers, and deployers must comply with to protect users from unsafe behavior. There is a need to create secure and resilient AI systems that can preserve users’ privacy. In this regard, the AI Act recalls the General Data Protection Regulation (GDPR), which emphasized the integration of privacy and data protection into the design and development of systems.',
+    ];
+
+    $currentPrinciple = request()->route('principle');
+    $description = $descriptions[$currentPrinciple] ?? '';
+@endphp
+
+<div class="flex min-h-screen min-w-[1280px] w-full border border-black bg-white text-[#5d5d5d]">
 
     {{-- SIDEBAR --}}
     <aside
-        class="relative z-30 flex min-h-[832px] w-[119px] shrink-0 flex-col items-center bg-[#252525]"
+        class="relative z-30 flex min-h-screen w-[119px] shrink-0 flex-col items-center bg-[#252525]"
         aria-label="Primary navigation"
     >
         <div class="flex w-full flex-col items-center pt-[18px]">
@@ -33,8 +48,8 @@
 
                 <span
                     class="bg-[linear-gradient(90deg,#ff2f92_0%,#635bff_50%,#00c2ff_100%)]
-                           bg-clip-text font-['Work_Sans-Regular'] text-[26px]
-                           leading-none text-transparent"
+                           bg-clip-text font-['Work_Sans-Regular']
+                           text-[26px] leading-none text-transparent"
                 >
                     FrameSAI
                 </span>
@@ -48,18 +63,14 @@
                     <a
                         href="{{ route('home') }}"
                         class="flex h-[89px] w-[95px] flex-col items-center
-                               justify-center rounded-[10px] text-white
-                               focus-visible:outline focus-visible:outline-2
-                               focus-visible:outline-offset-2
-                               focus-visible:outline-[#4a90e2]"
+                               justify-center rounded-[10px] text-white"
                     >
                         <img
                             src="{{ asset('img/homepage.png') }}"
                             alt=""
                             class="mb-[7px] block h-[36px] w-[36px]"
                         >
-
-                        <span class="font-['Work_Sans-Regular'] text-[11px] leading-[1.1]">
+                        <span class="font-['Work_Sans-Regular'] text-[11px]">
                             Homepage
                         </span>
                     </a>
@@ -70,18 +81,14 @@
                         href="{{ route('library-principles') }}"
                         aria-current="page"
                         class="flex h-[89px] w-[95px] flex-col items-center
-                               justify-center rounded-[10px] bg-[#3b3b3b] text-white
-                               focus-visible:outline focus-visible:outline-2
-                               focus-visible:outline-offset-2
-                               focus-visible:outline-[#4a90e2]"
+                               justify-center rounded-[10px] bg-[#3b3b3b] text-white"
                     >
                         <img
                             src="{{ asset('img/principles.png') }}"
                             alt=""
                             class="mb-[7px] block h-[36px] w-[36px]"
                         >
-
-                        <span class="font-['Work_Sans-Regular'] text-[11px] leading-[1.1]">
+                        <span class="font-['Work_Sans-Regular'] text-[11px]">
                             Principles
                         </span>
                     </a>
@@ -91,18 +98,14 @@
                     <a
                         href="{{ url('/guidelines') }}"
                         class="flex h-[89px] w-[95px] flex-col items-center
-                               justify-center rounded-[10px] text-white
-                               focus-visible:outline focus-visible:outline-2
-                               focus-visible:outline-offset-2
-                               focus-visible:outline-[#4a90e2]"
+                               justify-center rounded-[10px] text-white"
                     >
                         <img
                             src="{{ asset('img/guidelines.png') }}"
                             alt=""
                             class="mb-[7px] block h-[36px] w-[36px]"
                         >
-
-                        <span class="font-['Work_Sans-Regular'] text-[11px] leading-[1.1]">
+                        <span class="font-['Work_Sans-Regular'] text-[11px]">
                             Guidelines
                         </span>
                     </a>
@@ -112,21 +115,14 @@
                     <a
                         href="{{ route('success-criteria') }}"
                         class="flex h-[89px] w-[95px] flex-col items-center
-                               justify-center rounded-[10px] text-white
-                               focus-visible:outline focus-visible:outline-2
-                               focus-visible:outline-offset-2
-                               focus-visible:outline-[#4a90e2]"
+                               justify-center rounded-[10px] text-white"
                     >
                         <img
                             src="{{ asset('img/success-criteria.png') }}"
                             alt=""
                             class="mb-[7px] block h-[36px] w-[36px]"
                         >
-
-                        <span
-                            class="px-[6px] text-center font-['Work_Sans-Regular']
-                                   text-[11px] leading-[1.1]"
-                        >
+                        <span class="px-[6px] text-center font-['Work_Sans-Regular'] text-[11px]">
                             Success Criteria
                         </span>
                     </a>
@@ -136,21 +132,14 @@
                     <a
                         href="{{ route('design-pattern') }}"
                         class="flex h-[89px] w-[95px] flex-col items-center
-                               justify-center rounded-[10px] text-white
-                               focus-visible:outline focus-visible:outline-2
-                               focus-visible:outline-offset-2
-                               focus-visible:outline-[#4a90e2]"
+                               justify-center rounded-[10px] text-white"
                     >
                         <img
                             src="{{ asset('img/design-pattern.png') }}"
                             alt=""
                             class="mb-[7px] block h-[36px] w-[36px]"
                         >
-
-                        <span
-                            class="px-[6px] text-center font-['Work_Sans-Regular']
-                                   text-[11px] leading-[1.1]"
-                        >
+                        <span class="px-[6px] text-center font-['Work_Sans-Regular'] text-[11px]">
                             Design Pattern
                         </span>
                     </a>
@@ -160,22 +149,21 @@
         </nav>
     </aside>
 
-    {{-- CONTENUTO PRINCIPIO --}}
-    <main class="relative min-h-[832px] flex-1 bg-[#e9e9e9]">
-        <section class="h-full pb-[30px] pl-[54px] pr-[77px] pt-[26px]">
+    {{-- CONTENUTO --}}
+    <main class="relative min-h-screen flex-1 bg-[#e9e9e9]">
+        <section class="min-h-screen pb-[50px] pl-[54px] pr-[77px] pt-[26px]">
 
             <header class="flex items-start gap-[20px]">
 
-                {{-- FRECCIA BACK UNIVERSALE --}}
+                {{-- TORNA ALLA LIBRERIA --}}
                 <a
-                    href="{{ url()->previous() }}"
-                    onclick="event.preventDefault(); window.history.back();"
-                    class="mt-[18px] flex h-[28px] w-[28px] items-center
-                           justify-center rounded-[4px] text-black
+                    href="{{ route('library-principles') }}"
+                    class="mt-[18px] flex h-[28px] w-[28px] shrink-0
+                           items-center justify-center rounded-[4px] text-black
                            focus-visible:outline focus-visible:outline-2
                            focus-visible:outline-offset-2
                            focus-visible:outline-[#4a90e2]"
-                    aria-label="Torna alla pagina precedente"
+                    aria-label="Torna alla Library of Principles"
                 >
                     <svg
                         viewBox="0 0 25 17"
@@ -190,7 +178,6 @@
                             stroke-width="2"
                             stroke-linecap="round"
                         />
-
                         <path
                             d="M8.5 1.5L1.5 8.5L8.5 15.5"
                             stroke="black"
@@ -210,7 +197,7 @@
                         >
 
                         <h1
-                            class="bg-[linear-gradient(90deg,#cf3aa8_0%,#5f67ff_52%,#6bc1ff_100%)]
+                            class="m-0 bg-[linear-gradient(90deg,#cf3aa8_0%,#5f67ff_52%,#6bc1ff_100%)]
                                    bg-clip-text font-['Roboto_Slab-Regular']
                                    text-[29px] leading-[1.1] text-transparent"
                         >
@@ -226,108 +213,71 @@
                 </div>
             </header>
 
-            <div class="ml-[47px] mr-[10px] mt-[31px] flex gap-[26px]">
-                <div class="max-w-[856px] flex-1">
+            <div class="ml-[47px] mr-[10px] mt-[31px] max-w-[856px]">
 
-                    <section aria-labelledby="principle-description">
-                        <h2 id="principle-description" class="sr-only">
-                            Principle description
-                        </h2>
+                {{-- DESCRIZIONE DINAMICA --}}
+                <section aria-labelledby="principle-description">
+                    <h2 id="principle-description" class="sr-only">
+                        Principle description
+                    </h2>
 
-                        <p
-                            class="font-['Work_Sans-Regular'] text-[18px]
-                                   leading-[1.08] text-[#5f5f5f]"
-                        >
-                            Description of the principle. Description of the principle.
-                            Description of the principle. Description of the principle.
-                        </p>
-
-                        <p
-                            class="mt-[9px] font-['Work_Sans-Regular']
-                                   text-[18px] leading-[1.08] text-[#5f5f5f]"
-                        >
-                            Description of the principle. Description of the principle.
-                            Description of the principle. Description of the principle.
-                            Description of the principle.
-                        </p>
-
-                        <p
-                            class="mt-[28px] font-['Work_Sans-Regular']
-                                   text-[18px] leading-[1.08] text-[#5f5f5f]"
-                        >
-                            Description of the principle. Description of the principle.
-                            Description of the principle. Description of the principle.
-                            Description of the principle. Description of the principle.
-                        </p>
-                    </section>
-
-                    <section
-                        class="mt-[49px] rounded-[9px] border border-[#88cfff]
-                               bg-transparent px-[25px] pb-[26px] pt-[18px]"
-                        aria-labelledby="application-example"
+                    <p
+                        class="m-0 font-['Work_Sans-Regular'] text-[18px]
+                               leading-[1.35] text-[#5f5f5f]"
                     >
-                        <div class="flex items-center gap-[14px]">
-                            <img
-                                src="{{ asset('img/application-icon.png') }}"
-                                alt=""
-                                class="block h-[26px] w-[26px] object-contain"
-                            >
+                        {{ $description }}
+                    </p>
+                </section>
 
-                            <h2
-                                id="application-example"
-                                class="font-['Roboto_Slab-Regular']
-                                       text-[18px] leading-[1.1] text-[#575757]"
-                            >
-                                Application example
-                            </h2>
-                        </div>
-
-                        <p
-                            class="mt-[15px] font-['Work_Sans-Regular']
-                                   text-[18px] leading-[1.08] text-[#5f5f5f]"
-                        >
-                            Description of the application example. Description of the
-                            application example. Description of the application example.
-                        </p>
-
-                        <p
-                            class="mt-[2px] font-['Work_Sans-Regular']
-                                   text-[18px] leading-[1.08] text-[#5f5f5f]"
-                        >
-                            Description of the application example. Description of the
-                            application example. Description of the application example.
-                            Description of the application example.
-                        </p>
-                    </section>
-
-                    <section class="mt-[35px]" aria-label="Related content">
-                        <div class="grid grid-cols-3 gap-[19px]">
-                            <article class="h-[116px] rounded-[8px] bg-[#d9d9d9]"></article>
-                            <article class="h-[116px] rounded-[8px] bg-[#d9d9d9]"></article>
-                            <article class="h-[116px] rounded-[8px] bg-[#d9d9d9]"></article>
-                        </div>
-                    </section>
-                </div>
-
-                {{-- SCROLL DECORATIVO --}}
-                <div
-                    class="flex w-[24px] flex-col items-center justify-between pt-[18px]"
-                    aria-hidden="true"
+                {{-- APPLICATION EXAMPLE --}}
+                <section
+                    class="mt-[49px] rounded-[9px] border border-[#88cfff]
+                           bg-transparent px-[25px] pb-[26px] pt-[18px]"
+                    aria-labelledby="application-example"
                 >
-                    <img
-                        src="{{ asset('img/scroll-top.png') }}"
-                        alt=""
-                        class="block h-[26px] w-[20px]"
-                    >
+                    <div class="flex items-center gap-[14px]">
+                        <img
+                            src="{{ asset('img/application-icon.png') }}"
+                            alt=""
+                            class="block h-[26px] w-[26px] object-contain"
+                        >
 
-                    <div class="h-[487px] w-[16px] rounded-full bg-[#b1b1b1]"></div>
+                        <h2
+                            id="application-example"
+                            class="m-0 font-['Roboto_Slab-Regular']
+                                   text-[18px] leading-[1.1] text-[#575757]"
+                        >
+                            Application example
+                        </h2>
+                    </div>
 
-                    <img
-                        src="{{ asset('img/scroll-bottom.png') }}"
-                        alt=""
-                        class="block h-[26px] w-[20px]"
+                    <p
+                        class="mt-[15px] font-['Work_Sans-Regular']
+                               text-[18px] leading-[1.35] text-[#5f5f5f]"
                     >
-                </div>
+                        Description of the application example. Description of the
+                        application example. Description of the application example.
+                    </p>
+
+                    <p
+                        class="mt-[8px] font-['Work_Sans-Regular']
+                               text-[18px] leading-[1.35] text-[#5f5f5f]"
+                    >
+                        Description of the application example. Description of the
+                        application example. Description of the application example.
+                        Description of the application example.
+                    </p>
+                </section>
+
+                {{-- RELATED CONTENT --}}
+                <section class="mt-[35px]" aria-label="Related content">
+                    <div class="grid grid-cols-3 gap-[19px]">
+                        <article class="h-[116px] rounded-[8px] bg-[#d9d9d9]"></article>
+                        <article class="h-[116px] rounded-[8px] bg-[#d9d9d9]"></article>
+                        <article class="h-[116px] rounded-[8px] bg-[#d9d9d9]"></article>
+                    </div>
+                </section>
+
             </div>
         </section>
     </main>
