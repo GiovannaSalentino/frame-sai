@@ -1,213 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+@extends('layouts.app', ['activeSection' => 'home'])
 
-    <title>FrameSAI</title>
+@section('title', 'FrameSAI — Responsible AI Design Framework')
+@section('meta_description', 'Explore principles, guidelines, success criteria and interaction design patterns for symbiotic artificial intelligence.')
+@section('main_class', 'min-w-0 flex-1 bg-[#ececec]')
 
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
-
-<body class="m-0 bg-white">
-<div class="flex min-h-screen min-w-[1180px] bg-white">
-
-    {{-- SIDEBAR --}}
-    <aside
-        class="relative z-30 flex min-h-screen w-[119px] shrink-0
-               flex-col items-center bg-[#252525]"
-        aria-label="Primary navigation"
-    >
-        <div class="flex w-full flex-col items-center pt-[18px]">
-            <a
-                href="{{ route('home') }}"
-                class="flex flex-col items-center justify-center gap-[6px] rounded-[4px]"
-                aria-label="FrameSAI home"
-            >
-                <img
-                    src="{{ asset('img/group.png') }}"
-                    alt="FrameSAI logo"
-                    class="block h-[67px] w-[61px]"
-                >
-
-                <span
-                    class="bg-gradient-to-r from-[#ff2f92] via-[#635bff]
-                           to-[#00c2ff] bg-clip-text font-['Work_Sans']
-                           text-[26px] leading-none text-transparent"
-                >
-                    FrameSAI
-                </span>
-            </a>
-        </div>
-
-        <nav class="mt-[45px] w-full" aria-label="Sections">
-            <ul class="flex w-full flex-col items-center gap-[16px]">
-
-                <li class="flex w-full justify-center">
-                    <a
-                        href="{{ route('home') }}"
-                        aria-current="page"
-                        class="flex h-[89px] w-[95px] flex-col items-center
-                               justify-center rounded-[8px] bg-[#3b3b3b] text-white"
-                    >
-                        <img
-                            src="{{ asset('img/homepage.png') }}"
-                            alt=""
-                            class="mb-[7px] block h-[36px] w-[36px]"
-                        >
-
-                        <span class="font-['Work_Sans'] text-[11px]">
-                            Homepage
-                        </span>
-                    </a>
-                </li>
-
-                <li class="flex w-full justify-center">
-                    <a
-                        href="{{ route('library-principles') }}"
-                        class="flex h-[89px] w-[95px] flex-col items-center
-                               justify-center rounded-[8px] text-white"
-                    >
-                        <img
-                            src="{{ asset('img/principles.png') }}"
-                            alt=""
-                            class="mb-[7px] block h-[36px] w-[36px]"
-                        >
-
-                        <span class="font-['Work_Sans'] text-[11px]">
-                            Principles
-                        </span>
-                    </a>
-                </li>
-
-                <li class="flex w-full justify-center">
-                    <a
-                        href="/guidelines"
-                        class="flex h-[89px] w-[95px] flex-col items-center
-                               justify-center rounded-[8px] text-white"
-                    >
-                        <img
-                            src="{{ asset('img/guidelines.png') }}"
-                            alt=""
-                            class="mb-[7px] block h-[36px] w-[36px]"
-                        >
-
-                        <span class="font-['Work_Sans'] text-[11px]">
-                            Guidelines
-                        </span>
-                    </a>
-                </li>
-
-                <li class="flex w-full justify-center">
-                    <a
-                        href="{{ route('success-criteria') }}"
-                        class="flex h-[89px] w-[95px] flex-col items-center
-                               justify-center rounded-[8px] text-white"
-                    >
-                        <img
-                            src="{{ asset('img/success-criteria.png') }}"
-                            alt=""
-                            class="mb-[7px] block h-[36px] w-[36px]"
-                        >
-
-                        <span class="px-[6px] text-center font-['Work_Sans'] text-[11px]">
-                            Success Criteria
-                        </span>
-                    </a>
-                </li>
-
-                <li class="flex w-full justify-center">
-                    <a
-                        href="{{ route('design-pattern') }}"
-                        class="flex h-[89px] w-[95px] flex-col items-center
-                               justify-center rounded-[8px] text-white"
-                    >
-                        <img
-                            src="{{ asset('img/design-pattern.png') }}"
-                            alt=""
-                            class="mb-[7px] block h-[36px] w-[36px]"
-                        >
-
-                        <span class="px-[6px] text-center font-['Work_Sans'] text-[11px]">
-                            Design Pattern
-                        </span>
-                    </a>
-                </li>
-
-            </ul>
-        </nav>
-    </aside>
-
-    {{-- HOMEPAGE --}}
-    <main
-        class="relative min-h-screen flex-1 overflow-hidden bg-[#dedede]"
-        aria-labelledby="homepage-title"
-    >
-        <section class="relative mx-auto min-h-[832px] w-full max-w-[1160px]">
-
-            <header
-                class="absolute left-[65px] top-[90px] flex flex-col items-center"
-            >
-                <h1
-                    id="homepage-title"
-                    class="m-0 bg-gradient-to-r from-[#d4008f]
-                           to-[#2f8ee5] bg-clip-text font-['Work_Sans']
-                           text-[44px] font-normal leading-none text-transparent"
-                >
-                    FrameSAI
-                </h1>
-
-                <div
-                    class="mt-[4px] h-[3px] w-[286px]
-                           bg-gradient-to-r from-[rgba(255,0,138,0.55)]
-                           to-[rgba(0,207,255,0.55)]"
-                ></div>
-
-                <p
-                    class="mt-[10px] font-['Work_Sans']
-                           text-[12px] leading-none text-black"
-                >
-                    description of platform
+@section('content')
+    <div class="content-shell flex min-h-[calc(100vh-72px)] items-center lg:min-h-screen">
+        <section class="grid w-full items-center gap-10 py-8 md:grid-cols-[1.05fr_0.95fr] lg:py-14">
+            <div class="max-w-2xl">
+                <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-[#765b9c]">Symbiotic Artificial Intelligence</p>
+                <h1 class="m-0 bg-gradient-to-r from-[#d4008f] via-[#7653e7] to-[#2f8ee5] bg-clip-text text-5xl font-semibold leading-none text-transparent sm:text-6xl">FrameSAI</h1>
+                <p class="mt-6 max-w-xl text-lg leading-relaxed text-[#4d4d4d] sm:text-xl">
+                    A design framework that translates responsible AI principles into guidelines,
+                    measurable success criteria and reusable interaction patterns.
                 </p>
-            </header>
 
-            {{-- ILLUSTRAZIONE CENTRALE --}}
-            <section
-                class="absolute left-1/2 top-[178px]
-                       flex h-[330px] w-[430px]
-                       -translate-x-1/2 items-center justify-center"
-                aria-label="FrameSAI illustration"
-            >
-                <div class="relative h-[300px] w-[300px]">
-
-                    <div
-                        class="absolute left-[29px] top-0 h-[137px] w-[242px]
-                               rounded-[16px] bg-gradient-to-r
-                               from-[#67d8e8] via-[#13bcea] to-[#4476d7]
-                               [clip-path:polygon(50%_0%,100%_47%,50%_100%,0%_47%)]"
-                    ></div>
-
-                    <div
-                        class="absolute left-[29px] top-[108px]
-                               h-[137px] w-[242px] rounded-[16px]
-                               bg-gradient-to-r from-[#eb8db9]
-                               via-[#a96bc8] to-[#5f4478]
-                               [clip-path:polygon(50%_0%,100%_47%,50%_100%,0%_47%)]"
-                    ></div>
-
-                    <div
-                        class="absolute left-[29px] top-[162px]
-                               h-[137px] w-[242px] rounded-[16px]
-                               bg-gradient-to-r from-[#ff4e80]
-                               via-[#ff006a] to-[#c4004f]
-                               [clip-path:polygon(50%_0%,100%_47%,50%_100%,0%_47%)]"
-                    ></div>
-
+                <div class="mt-8 flex flex-wrap gap-3">
+                    <a href="{{ route('library-principles') }}" class="rounded-lg bg-[#252525] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#414141] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5b65d8]">Explore the framework</a>
+                    <a href="{{ route('design-pattern') }}" class="rounded-lg border border-[#252525]/20 bg-white px-5 py-3 text-sm font-semibold text-[#252525] transition hover:border-[#5b65d8] hover:text-[#5b65d8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5b65d8]">Browse design patterns</a>
                 </div>
-            </section>
 
+                <dl class="mt-10 grid max-w-xl grid-cols-2 gap-3 sm:grid-cols-4">
+                    @foreach ([['4', 'Principles'], ['12', 'Guidelines'], ['16', 'Criteria'], ['14', 'Patterns']] as [$value, $label])
+                        <div class="surface-card px-4 py-3">
+                            <dt class="text-xs text-[#747474]">{{ $label }}</dt>
+                            <dd class="mt-1 text-2xl font-semibold text-[#252525]">{{ $value }}</dd>
+                        </div>
+                    @endforeach
+                </dl>
+            </div>
+
+            <div class="relative mx-auto flex aspect-square w-full max-w-[430px] items-center justify-center" aria-hidden="true">
+                <div class="absolute h-[44%] w-[78%] -translate-y-[42%] rounded-[24px] bg-gradient-to-r from-[#67d8e8] via-[#13bcea] to-[#4476d7] shadow-xl [clip-path:polygon(50%_0%,100%_47%,50%_100%,0%_47%)]"></div>
+                <div class="absolute h-[44%] w-[78%] translate-y-[5%] rounded-[24px] bg-gradient-to-r from-[#eb8db9] via-[#a96bc8] to-[#5f4478] shadow-xl [clip-path:polygon(50%_0%,100%_47%,50%_100%,0%_47%)]"></div>
+                <div class="absolute h-[44%] w-[78%] translate-y-[52%] rounded-[24px] bg-gradient-to-r from-[#ff4e80] via-[#ff006a] to-[#c4004f] shadow-xl [clip-path:polygon(50%_0%,100%_47%,50%_100%,0%_47%)]"></div>
+            </div>
         </section>
-    </main>
-</div>
-</body>
-</html>
+    </div>
+@endsection

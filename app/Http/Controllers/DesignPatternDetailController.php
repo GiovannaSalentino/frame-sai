@@ -8,21 +8,14 @@ class DesignPatternDetailController extends Controller
 {
     public function show(string $pattern): View
     {
-        $patterns = [
-            '1' => [
-                'code' => 'D.P. 1',
-                'title' => 'Supervise the AI System',
-            ],
-            '2' => [
-                'code' => 'D.P. 2',
-                'title' => "Understand Model's Architecture",
-            ],
-        ];
+        $patterns = config('framesai.design_patterns');
 
         abort_unless(isset($patterns[$pattern]), 404);
 
         return view('pages.design-pattern-detail', [
             'pattern' => $patterns[$pattern],
+            'guidelines' => config('framesai.guidelines'),
+            'criteria' => config('framesai.success_criteria'),
         ]);
     }
 }
