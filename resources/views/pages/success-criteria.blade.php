@@ -1,6 +1,6 @@
 @extends('layouts.app', ['activeSection' => 'success-criteria'])
 
-@section('title', 'FrameSAI — Valutation Success Criteria')
+@section('title', 'Toolkit — Valutation Success Criteria')
 
 @section('content')
     @php $principleColors = collect($principles)->keyBy('code'); @endphp

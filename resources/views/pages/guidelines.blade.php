@@ -1,6 +1,6 @@
 @extends('layouts.app', ['activeSection' => 'guidelines'])
 
-@section('title', 'FrameSAI — Design Guidelines')
+@section('title', 'Toolkit — Design Guidelines')
 
 @section('content')
     @php $principleColors = collect($principles)->keyBy('code'); @endphp

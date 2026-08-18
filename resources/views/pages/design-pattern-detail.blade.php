@@ -1,6 +1,6 @@
 @extends('layouts.app', ['activeSection' => 'design-patterns'])
 
-@section('title', 'FrameSAI — '.$pattern['title'])
+@section('title', 'Toolkit — '.$pattern['title'])
 
 @section('content')
     <div class="content-shell">

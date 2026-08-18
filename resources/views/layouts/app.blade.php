@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="@yield('meta_description', 'FrameSAI: a design framework for responsible and symbiotic artificial intelligence.')">
 
-    <title>@yield('title', 'FrameSAI')</title>
+    <title>@yield('title', 'Toolkit')</title>
+
+    <link rel="icon" href="{{ asset('group.png') }}" type="image/png">
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>

@@ -34,7 +34,7 @@
 @endphp
 
 <aside
-    class="sticky top-0 z-30 flex w-full shrink-0 flex-col items-stretch bg-[#252525] px-3 py-3 lg:fixed lg:inset-y-0 lg:left-0 lg:h-screen lg:w-[132px] lg:items-center lg:overflow-hidden lg:px-2 lg:py-3"
+    class="sticky top-0 z-30 flex w-full shrink-0 flex-col items-stretch bg-white px-3 py-3 lg:fixed lg:inset-y-0 lg:left-0 lg:h-screen lg:w-[132px] lg:items-center lg:overflow-hidden lg:px-2 lg:py-3 lg:border-r lg:border-gray-200"
     aria-label="Primary navigation"
 >
     <a
@@ -53,9 +53,10 @@
                     <a
                         href="{{ route($item['route']) }}"
                         @if ($isActive) aria-current="page" @endif
-                        class="flex h-[64px] min-w-0 flex-col items-center justify-center gap-1 rounded-lg px-1 text-white transition hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#73cfff] lg:h-[78px] lg:w-full {{ $isActive ? 'bg-white/10' : '' }}"
+                        class="flex h-[64px] min-w-0 flex-col items-center justify-center gap-1 rounded-lg px-1 text-gray-900 transition hover:bg-black/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#73cfff] lg:h-[78px] lg:w-full {{ $isActive ? 'bg-black/10' : '' }}"
                     >
-                        <img src="{{ asset('img/'.$item['icon']) }}" alt="" class="pointer-events-none h-8 w-8 object-contain lg:h-12 lg:w-12">
+                        <!-- Aggiunto 'invert' per rendere le icone bianche → nere -->
+                        <img src="{{ asset('img/'.$item['icon']) }}" alt="" class="pointer-events-none h-8 w-8 object-contain lg:h-12 lg:w-12 invert">
                         <span class="text-center text-[9px] leading-tight sm:text-[10px] lg:text-[11px]">{{ $item['label'] }}</span>
                     </a>
                 </li>

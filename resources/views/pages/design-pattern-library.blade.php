@@ -1,6 +1,6 @@
 @extends('layouts.app', ['activeSection' => 'design-patterns'])
 
-@section('title', 'FrameSAI — Design Pattern Library')
+@section('title', 'Toolkit — Design Pattern Library')
 
 @section('content')
     <div class="content-shell max-w-[1500px]">

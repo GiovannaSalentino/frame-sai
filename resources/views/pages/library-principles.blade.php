@@ -1,6 +1,6 @@
 @extends('layouts.app', ['activeSection' => 'principles'])
 
-@section('title', 'FrameSAI — Principles')
+@section('title', 'Toolkit — Principles')
 
 @section('content')
     <div class="content-shell">
