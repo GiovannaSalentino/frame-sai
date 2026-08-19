@@ -21,6 +21,7 @@ class SuccessCriteriaController extends Controller
         $guidelines = collect($criteria)
             ->groupBy('guideline')
             ->map(fn ($items, string $code) => ['code' => $code, 'count' => $items->count()])
+            ->sortBy(fn (array $guideline) => (int) substr($guideline['code'], 1))
             ->values()
             ->all();
 

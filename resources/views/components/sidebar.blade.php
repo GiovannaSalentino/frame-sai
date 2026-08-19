@@ -34,7 +34,7 @@
 @endphp
 
 <aside
-    class="sticky top-0 z-30 flex w-full shrink-0 flex-col items-stretch bg-white px-3 py-3 lg:fixed lg:inset-y-0 lg:left-0 lg:h-screen lg:w-[132px] lg:items-center lg:overflow-hidden lg:px-2 lg:py-3 lg:border-r lg:border-gray-200"
+    class="sticky top-0 mt-5 z-30 flex w-full shrink-0 flex-col items-stretch bg-white px-3 py-3 lg:fixed lg:inset-y-0 lg:left-0 lg:h-screen lg:w-[132px] lg:items-center lg:overflow-hidden lg:px-2 lg:py-3 lg:border-r lg:border-gray-200"
     aria-label="Primary navigation"
 >
     <a
@@ -46,7 +46,7 @@
     </a>
 
     <nav class="min-w-0 flex-1 lg:mt-4 lg:w-full" aria-label="Main sections">
-        <ul class="grid min-w-0 grid-cols-5 items-center gap-1 lg:flex lg:flex-col lg:gap-1">
+        <ul class="grid min-w-0 grid-cols-5 items-center gap-1 lg:flex lg:flex-col lg:gap-1 mt-4">
             @foreach ($navigation as $item)
                 @php $isActive = ($active ?? null) === $item['key']; @endphp
                 <li class="min-w-0 lg:w-full">

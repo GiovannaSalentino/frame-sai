@@ -23,7 +23,7 @@
                 @endforeach
                 <div class="my-4 h-px bg-black/10"></div>
                 <p class="mb-2 px-2 text-[10px] font-semibold uppercase tracking-wide text-[#888]">Guidelines</p>
-                <div class="grid grid-cols-2 gap-1">
+                <div class="grid gap-1">
                     @foreach ($guidelines as $guideline)
                         <button type="button" class="filter-button" data-criterion-filter="{{ $guideline['code'] }}" aria-pressed="false">
                             <span class="flex h-8 w-9 shrink-0 items-center justify-center rounded-md border border-black/50 text-xs">{{ $guideline['code'] }}</span>

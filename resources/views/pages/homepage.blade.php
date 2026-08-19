@@ -17,11 +17,16 @@
                 </p>
 
                 <dl class="mt-10 grid max-w-xl grid-cols-2 gap-3 sm:grid-cols-4">
-                    @foreach ([['4', 'Principles'], ['12', 'Guidelines'], ['16', 'Criteria'], ['14', 'Patterns']] as [$value, $label])
-                        <div class="surface-card px-4 py-3">
-                            <dt class="text-xs text-[#747474]">{{ $label }}</dt>
-                            <dd class="mt-1 text-2xl font-semibold text-[#252525]">{{ $value }}</dd>
-                        </div>
+                    @foreach ([
+                        ['value' => '4',  'label' => 'Principles', 'route' => 'library-principles', 'border' => 'border-[#2f8ee5]', 'shadow' => 'hover:shadow-[0_8px_20px_rgba(47,142,229,0.25)]'],
+                        ['value' => '12', 'label' => 'Guidelines',  'route' => 'guidelines',         'border' => 'border-[#7653e7]', 'shadow' => 'hover:shadow-[0_8px_20px_rgba(118,83,231,0.25)]'],
+                        ['value' => '16', 'label' => 'Criteria',    'route' => 'success-criteria',   'border' => 'border-[#a96bc8]', 'shadow' => 'hover:shadow-[0_8px_20px_rgba(169,107,200,0.25)]'],
+                        ['value' => '14', 'label' => 'Patterns',    'route' => 'design-pattern',     'border' => 'border-[#d4008f]', 'shadow' => 'hover:shadow-[0_8px_20px_rgba(212,0,143,0.25)]'],
+                    ] as $card)
+                        <a href="{{ route($card['route']) }}" class="surface-card group block px-4 py-3 border-2 {{ $card['border'] }} {{ $card['shadow'] }} transition-all duration-200 ease-out hover:scale-[1.04] hover:-translate-y-0.5 active:scale-[0.97]">
+                            <dt class="text-xs text-[#747474] group-hover:text-[#252525] transition-colors">{{ $card['label'] }}</dt>
+                            <dd class="mt-1 text-2xl font-semibold text-[#252525]">{{ $card['value'] }}</dd>
+                        </a>
                     @endforeach
                 </dl>
             </div>
