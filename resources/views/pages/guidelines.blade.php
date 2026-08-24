@@ -5,7 +5,7 @@
 @section('content')
     @php $principleColors = collect($principles)->keyBy('code'); @endphp
     <div class="content-shell">
-        <x-page-header title="Design Guidelines" eyebrow="From principles to design direction" icon="compasso-viola.png" :back-route="route('home')" back-label="Back to homepage" />
+        <x-page-header title="Design Guidelines" eyebrow="From principles to design direction" icon="compasso-viola.png"  />
 
         <div class="mt-8 grid gap-6 lg:grid-cols-[250px_minmax(0,1fr)]">
             <aside class="surface-card h-fit p-4" aria-label="Guideline filters">

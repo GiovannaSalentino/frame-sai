@@ -8,8 +8,6 @@
             title="Library of Principles"
             eyebrow="Framework foundations"
             icon="brick-viola.png"
-            :back-route="route('home')"
-            back-label="Back to homepage"
         />
 
         <p class="mt-8 max-w-8xl text-base leading-relaxed text-[#4d4d4d] sm:text-lg">

@@ -8,8 +8,6 @@
             :title="$principle['title']"
             eyebrow="Framework principle"
             icon="brick-viola.png"
-            :back-route="route('library-principles')"
-            back-label="Back to the principles"
         />
 
         <div class="mt-9 max-w-8xl">

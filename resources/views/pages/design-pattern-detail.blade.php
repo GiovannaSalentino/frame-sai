@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="content-shell">
-        <x-page-header :title="$pattern['title']" :eyebrow="$pattern['code']" icon="carta-viola.png" :back-route="route('design-pattern')" back-label="Back to the design pattern library" />
+        <x-page-header :title="$pattern['title']" :eyebrow="$pattern['code']" icon="carta-viola.png" />
 
         <div class="mt-8 grid max-w-6xl gap-6 xl:grid-cols-[minmax(0,1fr)_260px]">
             <div class="space-y-4">
