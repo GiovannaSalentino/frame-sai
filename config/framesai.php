@@ -11,7 +11,7 @@ return [
     'guidelines' => [
         'G1' => [
             'description' => 'The human must be able to check, monitor, and supervise the AI system’s behavior, taking into account how it functions and the decisions it makes.',
-            'principles' => ['P3', 'P1'],
+            'principles' => ['P1', 'P3'],
         ],
         'G2' => [
             'description' => 'The human must be enabled to assign proper meaning to the AI model’s outputs, whose presentation varies depending on task, processes, and structure to eventually modify its behavior.',
@@ -27,7 +27,7 @@ return [
         ],
         'G5' => [
             'description' => 'The human must not be manipulated by the AI system through persuasive behaviors unless they must be dissuaded against unethical intentions.',
-            'principles' => ['P4', 'P2'],
+            'principles' => ['P2', 'P4'],
         ],
         'G6' => [
             'description' => 'The human must be guaranteed privacy by the AI system, safeguarding sensitive data from improper access, theft, or loss.',

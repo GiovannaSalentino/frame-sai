@@ -3,10 +3,10 @@
 @section('title', 'Toolkit — Design Pattern Library')
 
 @section('content')
-    <div class="content-shell max-w-[1500px]">
+    <div class="content-shell max-w-[1200px]">
         <x-page-header title="Design Pattern Library" eyebrow="Reusable interaction solutions" icon="carta-viola.png"  />
 
-        <div class="mt-8 grid gap-6 lg:grid-cols-[190px_minmax(0,1fr)]">
+        <div class="mt-8 grid gap-4 lg:grid-cols-[210px_minmax(0,1fr)]">
             <aside class="surface-card h-fit p-3" aria-label="Pattern filters">
                 <button type="button" class="filter-button bg-black/5" data-pattern-filter="all" aria-pressed="true">
                     <span class="flex h-8 min-w-10 items-center justify-center rounded-md bg-[#4d4d4d] px-2 text-xs text-white">All</span>
@@ -31,7 +31,7 @@
                     </div>
                 </div>
 
-                <div class="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+                <div class="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-2">
                     @foreach ($patterns as $pattern)
                         <article class="surface-card flex min-h-[330px] flex-col p-4" data-pattern="{{ implode(' ', $pattern['guidelines']) }}">
                             <div class="flex items-start justify-between gap-3">

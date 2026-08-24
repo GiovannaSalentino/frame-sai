@@ -7,7 +7,7 @@
     <div class="content-shell">
         <x-page-header title="Design Guidelines" eyebrow="From principles to design direction" icon="compasso-viola.png"  />
 
-        <div class="mt-8 grid gap-6 lg:grid-cols-[250px_minmax(0,1fr)]">
+        <div class="mt-8 grid gap-6 lg:grid-cols-[210px_minmax(0,1fr)]">
             <aside class="surface-card h-fit p-4" aria-label="Guideline filters">
                 <button type="button" class="filter-button bg-black/5" data-guideline-filter="all" aria-pressed="true">
                     <span class="flex h-8 w-10 items-center justify-center rounded-md bg-[#4d4d4d] text-xs text-white">All</span>
@@ -32,7 +32,24 @@
                                 <span class="flex h-8 w-12 shrink-0 items-center justify-center rounded-md border border-black/50 text-sm font-semibold">{{ $guideline['code'] }}</span>
                                 <div class="flex flex-wrap justify-end gap-1.5">
                                     @foreach ($guideline['principles'] as $code)
-                                        <span class="rounded-full px-2.5 py-1 text-[10px] font-semibold" style="background-color: {{ $principleColors[$code]['color'] }}">{{ $code }}</span>
+                                        @php
+                                            $principle = $principleColors[$code] ?? null;
+                                            $slug = $principle['slug'] ?? null;
+                                            $color = $principle['color'] ?? '#ccc';
+                                        @endphp
+                                        @if ($slug)
+                                            <a href="{{ route('principles.show', ['principle' => $slug]) }}"
+                                            class="inline-block rounded-md px-2 py-1 text-[10px] font-semibold no-underline transition hover:opacity-80 hover:shadow-sm"
+                                            style="background-color: {{ $color }}"
+                                            title="Vai al principio {{ $principle['name'] ?? $code }}">
+                                                {{ $code }}
+                                            </a>
+                                        @else
+                                            <span class="inline-block rounded-md px-2 py-1 text-[10px] font-semibold"
+                                                style="background-color: {{ $color }}">
+                                                {{ $code }}
+                                            </span>
+                                        @endif
                                     @endforeach
                                 </div>
                             </div>

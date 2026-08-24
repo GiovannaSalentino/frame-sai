@@ -7,7 +7,7 @@
     <div class="content-shell">
         <x-page-header title="Valutation Success Criteria" eyebrow="Verifiable evaluation conditions" icon="tape-viola.png"  />
 
-        <div class="mt-8 grid gap-6 lg:grid-cols-[260px_minmax(0,1fr)]">
+        <div class="mt-8 grid gap-6 lg:grid-cols-[210px_minmax(0,1fr)]">
             <aside class="surface-card h-fit p-4" aria-label="Success criteria filters">
                 <button type="button" class="filter-button bg-black/5" data-criterion-filter="all" aria-pressed="true">
                     <span class="flex h-8 min-w-10 items-center justify-center rounded-md bg-[#32834b] px-2 text-xs text-white">All</span>
@@ -46,9 +46,6 @@
                             <div class="criterion-detail hidden border-t border-black/10 bg-[#fafafa] px-4 py-4">
                                 <p class="m-0 text-sm leading-relaxed text-[#4d4d4d]">{{ $criterion['description'] }}</p>
                                 <div class="mt-4 flex flex-wrap gap-2">
-                                  <!--  @foreach ($criterion['principles'] as $code)
-                                        <span class="rounded-md px-2 py-1 text-[10px] font-semibold" style="background-color: {{ $principleColors[$code]['color'] }}">{{ $code }}</span>
-                                    @endforeach -->
 
                                     @foreach ($criterion['principles'] as $code)
                                         @php
