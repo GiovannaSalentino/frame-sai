@@ -29,10 +29,10 @@
             <p class="mb-1 text-xs font-semibold uppercase tracking-[0.16em] text-[#766f86]">{{ $eyebrow }}</p>
         @endif
 
-        <h1 class="m-0 bg-gradient-to-r from-[#d6008f] via-[#654fda] to-[#248ed4] bg-clip-text text-2xl font-semibold leading-tight text-transparent sm:text-3xl">
+        <h1 class="m-0 bg-gradient-to-r from-[#d6008f] via-[#654fda] to-[#248ed4] bg-clip-text text-2xl font-semibold leading-tight text-transparent sm:text-3xl pb-0.5">
             {{ $title }}
         </h1>
 
-        <div class="mt-2 h-[3px] w-full max-w-[320px] rounded-full bg-gradient-to-r from-[#f53696] via-[#8c2ae8] to-[#54d2f4]"></div>
+        <div class="mt-2 h-[3px] w-full rounded-full bg-gradient-to-r from-[#f53696] via-[#8c2ae8] to-[#54d2f4]"></div>
     </div>
 </header>

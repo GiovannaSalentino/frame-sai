@@ -12,10 +12,9 @@
             back-label="Back to homepage"
         />
 
-        <p class="mt-8 max-w-4xl text-base leading-relaxed text-[#4d4d4d] sm:text-lg">
-            The principles are the foundation of FrameSAI. They describe the essential
-            qualities of a responsible relationship between people and artificial intelligence:
-            transparency, fairness, appropriate automation and protection.
+        <p class="mt-8 max-w-8xl text-base leading-relaxed text-[#4d4d4d] sm:text-lg">
+            The principles are the foundational pillars of our framework. They describe the essential, non-negotiable qualities of a responsible and symbiotic relationship between people and artificial intelligence.<br>
+            <br>They serve as the high-level guiding requirements that every AI system must meet to be considered human-centric, legally compliant, and capable of fostering a true symbiosis.They translate the complex legal and ethical requirements of the AI Act into a clear, actionable vision for design and development. The four core principles are:
         </p>
 
         <section class="mt-10 grid gap-5 sm:grid-cols-2 xl:grid-cols-4" aria-label="Principles">

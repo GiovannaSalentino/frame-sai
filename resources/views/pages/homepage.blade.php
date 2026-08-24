@@ -9,8 +9,12 @@
         <section class="grid w-full items-center gap-10 py-8 md:grid-cols-[1.05fr_0.95fr] lg:py-14">
             <div class="max-w-2xl">
                 <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-[#765b9c]">Symbiotic Artificial Intelligence</p>
-                <h1 class="m-0 bg-gradient-to-r from-[#d4008f] via-[#7653e7] to-[#2f8ee5] bg-clip-text text-5xl font-semibold leading-none text-transparent sm:text-6xl mb-4">A Toolkit to Create Symbiotic AI Sistem</h1>
-
+                <h1 class="m-0 text-5xl leading-none sm:text-6xl mb-4 text-[#3a3a3a]">A
+                    <span class="font-semibold bg-gradient-to-r from-[#d4008f] via-[#7653e7] to-[#2f8ee5] bg-clip-text text-transparent">
+                        Toolkit
+                    </span>
+                    to Create Symbiotic AI Sistem
+                </h1>
                 <p class="mt-6 max-w-xl text-lg leading-relaxed text-[#4d4d4d] sm:text-xl">
                     A design framework that translates responsible AI principles into guidelines,
                     measurable success criteria and reusable interaction patterns.
@@ -23,7 +27,7 @@
                         ['value' => '16', 'label' => 'Criteria',    'route' => 'success-criteria',   'border' => 'border-[#a96bc8]', 'shadow' => 'hover:shadow-[0_8px_20px_rgba(169,107,200,0.25)]'],
                         ['value' => '14', 'label' => 'Patterns',    'route' => 'design-pattern',     'border' => 'border-[#d4008f]', 'shadow' => 'hover:shadow-[0_8px_20px_rgba(212,0,143,0.25)]'],
                     ] as $card)
-                        <a href="{{ route($card['route']) }}" class="surface-card group block px-4 py-3 border-2 {{ $card['border'] }} {{ $card['shadow'] }} transition-all duration-200 ease-out hover:scale-[1.04] hover:-translate-y-0.5 active:scale-[0.97]">
+                        <a href="{{ route($card['route']) }}" class="surface-card group block px-4 py-3 border-1 {{ $card['border'] }} {{ $card['shadow'] }} transition-all duration-200 ease-out hover:scale-[1.04] hover:-translate-y-0.5 active:scale-[0.97]">
                             <dt class="text-xs text-[#747474] group-hover:text-[#252525] transition-colors">{{ $card['label'] }}</dt>
                             <dd class="mt-1 text-2xl font-semibold text-[#252525]">{{ $card['value'] }}</dd>
                         </a>

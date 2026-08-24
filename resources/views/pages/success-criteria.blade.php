@@ -35,7 +35,7 @@
 
             <section>
                 <p class="max-w-3xl text-base leading-relaxed text-[#4d4d4d] sm:text-lg">The 16 Success Criteria are atomic, verifiable conditions used to assess whether a system satisfies the requirements of symbiotic artificial intelligence.</p>
-                <div class="mt-7 grid gap-4 xl:grid-cols-2">
+                <div class="mt-7 grid gap-4 ">
                     @foreach ($criteria as $criterion)
                         <article class="surface-card overflow-hidden" data-criterion="{{ implode(' ', [...$criterion['principles'], $criterion['guideline']]) }}" data-code="{{ $criterion['code'] }}">
                             <button type="button" class="criterion-toggle flex w-full items-start gap-3 p-4 text-left" aria-expanded="false">
@@ -46,10 +46,32 @@
                             <div class="criterion-detail hidden border-t border-black/10 bg-[#fafafa] px-4 py-4">
                                 <p class="m-0 text-sm leading-relaxed text-[#4d4d4d]">{{ $criterion['description'] }}</p>
                                 <div class="mt-4 flex flex-wrap gap-2">
-                                    @foreach ($criterion['principles'] as $code)
+                                  <!--  @foreach ($criterion['principles'] as $code)
                                         <span class="rounded-md px-2 py-1 text-[10px] font-semibold" style="background-color: {{ $principleColors[$code]['color'] }}">{{ $code }}</span>
+                                    @endforeach -->
+
+                                    @foreach ($criterion['principles'] as $code)
+                                        @php
+                                            $principle = $principleColors[$code] ?? null;
+                                            $slug = $principle['slug'] ?? null;
+                                            $color = $principle['color'] ?? '#ccc';
+                                        @endphp
+                                        @if ($slug)
+                                            <a href="{{ route('principles.show', ['principle' => $slug]) }}"
+                                            class="inline-block rounded-md px-2 py-1 text-[10px] font-semibold no-underline transition hover:opacity-80 hover:shadow-sm"
+                                            style="background-color: {{ $color }}"
+                                            title="Vai al principio {{ $principle['name'] ?? $code }}">
+                                                {{ $code }}
+                                            </a>
+                                        @else
+                                            <span class="inline-block rounded-md px-2 py-1 text-[10px] font-semibold"
+                                                style="background-color: {{ $color }}">
+                                                {{ $code }}
+                                            </span>
+                                        @endif
                                     @endforeach
-                                    <a href="{{ route('guidelines', ['guideline' => $criterion['guideline']]) }}" class="rounded-md border border-black/40 px-2 py-1 text-[10px] font-semibold">{{ $criterion['guideline'] }}</a>
+
+                                    <a href="{{ route('guidelines', ['guideline' => $criterion['guideline']]) }}" class="rounded-md border border-black/40 px-2 py-1 text-[10px] font-semibold transition hover:border-[#7254b7] hover:bg-[#faf7ff]  ">{{ $criterion['guideline'] }}</a>
                                 </div>
                             </div>
                         </article>
