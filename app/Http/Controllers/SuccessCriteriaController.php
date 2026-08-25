@@ -8,8 +8,16 @@ class SuccessCriteriaController extends Controller
 {
     public function index(): View
     {
+        // 🔥 MODIFICA: Aggiungi il conteggio dei success criteria per ogni principio
         $principles = collect(config('framesai.principles'))
-            ->map(fn (array $principle, string $code) => [...$principle, 'code' => $code])
+            ->map(function (array $principle, string $code) {
+                // Conta quanti success criteria hanno questo principio
+                $count = collect(config('framesai.success_criteria'))
+                    ->filter(fn (array $criterion) => in_array($code, $criterion['principles'], true))
+                    ->count();
+
+                return [...$principle, 'code' => $code, 'count' => $count];
+            })
             ->values()
             ->all();
 

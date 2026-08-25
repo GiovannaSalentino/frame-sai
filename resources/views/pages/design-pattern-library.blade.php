@@ -3,7 +3,7 @@
 @section('title', 'Toolkit — Design Pattern Library')
 
 @section('content')
-    <div class="content-shell max-w-[1200px]">
+    <div class="content-shell max-w-[1165px]">
         <x-page-header title="Design Pattern Library" eyebrow="Reusable interaction solutions" icon="carta-viola.png"  />
 
         <div class="mt-8 grid gap-4 lg:grid-cols-[210px_minmax(0,1fr)]">

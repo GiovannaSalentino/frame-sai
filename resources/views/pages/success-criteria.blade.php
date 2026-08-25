@@ -11,14 +11,14 @@
             <aside class="surface-card h-fit p-4" aria-label="Success criteria filters">
                 <button type="button" class="filter-button bg-black/5" data-criterion-filter="all" aria-pressed="true">
                     <span class="flex h-8 min-w-10 items-center justify-center rounded-md bg-[#32834b] px-2 text-xs text-white">All</span>
-                    <span><strong class="block text-sm">All criteria</strong><small class="text-[#777]">{{ count($criteria) }} available</small></span>
+                    <span><strong class="block text-sm font-medium">All criteria</strong><small class="text-[#777]">{{ count($criteria) }} available</small></span>
                 </button>
                 <div class="my-4 h-px bg-black/10"></div>
                 <p class="mb-2 px-2 text-[10px] font-semibold uppercase tracking-wide text-[#888]">Principles</p>
                 @foreach ($principles as $principle)
                     <button type="button" class="filter-button" data-criterion-filter="{{ $principle['code'] }}" aria-pressed="false">
                         <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-md text-xs" style="background-color: {{ $principle['color'] }}">{{ $principle['code'] }}</span>
-                        <span class="text-sm">{{ $principle['name'] }}</span>
+                        <span><strong class="block text-sm font-medium">{{ $principle['name'] }}</strong><small class="text-[#777]">{{ $principle['count'] }} Success Criteria</small></span>
                     </button>
                 @endforeach
                 <div class="my-4 h-px bg-black/10"></div>
@@ -27,7 +27,7 @@
                     @foreach ($guidelines as $guideline)
                         <button type="button" class="filter-button" data-criterion-filter="{{ $guideline['code'] }}" aria-pressed="false">
                             <span class="flex h-8 w-9 shrink-0 items-center justify-center rounded-md border border-black/50 text-xs">{{ $guideline['code'] }}</span>
-                            <span><strong class="block text-xs font-medium">Guideline {{ substr($guideline['code'], 1) }}</strong><small class="text-[10px] text-[#777]">{{ $guideline['count'] }} SC</small></span>
+                            <span><strong class="block text-xs font-medium">Guideline {{ substr($guideline['code'], 1) }}</strong><small class="text-[10px] text-[#777]">{{ $guideline['count'] }} Success Criteria</small></span>
                         </button>
                     @endforeach
                 </div>
@@ -39,7 +39,7 @@
                     @foreach ($criteria as $criterion)
                         <article class="surface-card overflow-hidden" data-criterion="{{ implode(' ', [...$criterion['principles'], $criterion['guideline']]) }}" data-code="{{ $criterion['code'] }}">
                             <button type="button" class="criterion-toggle flex w-full items-start gap-3 p-4 text-left" aria-expanded="false">
-                                <span class="flex h-9 min-w-[58px] shrink-0 items-center justify-center rounded-md bg-[#69a978] px-2 text-xs font-semibold">{{ $criterion['code'] }}</span>
+                                <span class="flex h-9 min-w-[58px] shrink-0 items-center justify-center rounded-md bg-[#32834b] px-2 text-xs font-semibold text-white">{{ $criterion['code'] }}</span>
                                 <span class="min-w-0 flex-1 text-sm font-medium leading-relaxed text-[#303030]">{{ $criterion['title'] }}</span>
                                 <svg class="mt-2 h-5 w-5 shrink-0 text-[#666] transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
                             </button>
@@ -66,7 +66,7 @@
                                             </span>
                                         @endif
                                     @endforeach
-                                    <a href="{{ route('guidelines', ['guideline' => $criterion['guideline']]) }}" class="rounded-md border border-black/40 px-2 py-1 text-[10px] font-semibold transition hover:border-[#7254b7] hover:bg-[#faf7ff]">{{ $criterion['guideline'] }}</a>
+                                    <a href="{{ route('guidelines', ['guideline' => $criterion['guideline']]) }}" class="rounded-md border border-black/40 px-2 py-1 text-[10px] font-semibold transition hover:border-[#7254b7] hover: text-[#7254b7] hover:bg-[#faf7ff]">{{ $criterion['guideline'] }}</a>
                                 </div>
                             </div>
                         </article>

@@ -5,19 +5,19 @@
 @section('content')
     @php $principleColors = collect($principles)->keyBy('code'); @endphp
     <div class="content-shell">
-        <x-page-header title="Design Guidelines" eyebrow="From principles to design direction" icon="compasso-viola.png" />
+        <x-page-header title="Design Guidelines" eyebrow="From principles to design" icon="compasso-viola.png" />
 
         <div class="mt-8 grid gap-6 lg:grid-cols-[210px_minmax(0,1fr)]">
             <aside class="surface-card h-fit p-4" aria-label="Guideline filters">
                 <button type="button" class="filter-button bg-black/5" data-guideline-filter="all" aria-pressed="true">
                     <span class="flex h-8 w-10 items-center justify-center rounded-md bg-[#4d4d4d] text-xs text-white">All</span>
-                    <span><strong class="block text-sm">All Guidelines</strong><small class="text-[#777]">{{ count($guidelines) }} available</small></span>
+                    <span><strong class="block text-sm font-medium">All Guidelines</strong><small class="text-[#777]">{{ count($guidelines) }} available</small></span>
                 </button>
                 <div class="my-4 h-px bg-black/10"></div>
                 @foreach ($principles as $principle)
                     <button type="button" class="filter-button" data-guideline-filter="{{ $principle['code'] }}" aria-pressed="false">
                         <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-md text-xs" style="background-color: {{ $principle['color'] }}">{{ $principle['code'] }}</span>
-                        <span><strong class="block text-sm font-medium">{{ $principle['name'] }}</strong><small class="text-[#777]">{{ $principle['count'] }} guidelines</small></span>
+                        <span><strong class="block text-sm font-medium">{{ $principle['name'] }}</strong><small class="text-[#777]">{{ $principle['count'] }} Guidelines</small></span>
                     </button>
                 @endforeach
             </aside>
@@ -41,7 +41,7 @@
                                             <a href="{{ route('principles.show', ['principle' => $slug]) }}"
                                                class="inline-block rounded-md px-2 py-1 text-[10px] font-semibold no-underline transition hover:opacity-80 hover:shadow-sm"
                                                style="background-color: {{ $color }}"
-                                               title="Go to {{ $principle['name'] ?? $code }}">
+                                               title="Go to{{ $principle['name'] ?? $code }}">
                                                 {{ $code }}
                                             </a>
                                         @else
