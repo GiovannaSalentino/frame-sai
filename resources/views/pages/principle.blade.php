@@ -26,17 +26,11 @@
                 <p class="mt-4 text-base leading-relaxed text-[#555] sm:text-lg">{{ $principle['example'] }}</p>
             </section>
 
-            <!--
-            <nav class="mt-7 grid gap-4 sm:grid-cols-3" aria-label="Related framework sections">
-                <a href="{{ route('guidelines') }}" class="surface-card p-5 font-semibold text-[#5b4a85] transition hover:-translate-y-0.5 hover:shadow-md ">Related guidelines <span aria-hidden="true">→</span></a>
-                <a href="{{ route('success-criteria') }}" class="surface-card p-5 font-semibold text-[#5b4a85] transition hover:-translate-y-0.5 hover:shadow-md">Success criteria <span aria-hidden="true">→</span></a>
-                <a href="{{ route('design-pattern') }}" class="surface-card p-5 font-semibold text-[#5b4a85] transition hover:-translate-y-0.5 hover:shadow-md">Design patterns <span aria-hidden="true">→</span></a>
-            </nav>
-            -->
+
             <nav class="mt-7 grid gap-4 sm:grid-cols-3" aria-label="Related framework sections">
                 <!-- Guidelines -->
                 <div class="rounded-lg bg-gradient-to-r from-[#d4008f] via-[#7653e7] to-[#2f8ee5] p-[1px] transition-all duration-200 hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-md">
-                    <a href="{{ route('guidelines') }}"
+                    <a href="{{ route('guidelines', ['principle' => $principle['code']]) }}"
                     class="group block rounded-[calc(0.5rem-1.5px)] bg-white p-5 transition-colors">
                         <div class="flex items-center justify-between">
                             <span class="font-semibold text-[#5b4a85] group-hover:text-[#3a2a5a] transition-colors">Related guidelines</span>
@@ -47,10 +41,10 @@
 
                 <!-- Success Criteria -->
                 <div class="rounded-lg bg-gradient-to-r from-[#d4008f] via-[#7653e7] to-[#2f8ee5] p-[1px] transition-all duration-200 hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-md">
-                    <a href="{{ route('success-criteria') }}"
+                    <a href="{{ route('success-criteria', ['principle' => $principle['code']]) }}"
                     class="group block rounded-[calc(0.5rem-1.5px)] bg-white p-5 transition-colors">
                         <div class="flex items-center justify-between">
-                            <span class="font-semibold text-[#5b4a85] group-hover:text-[#3a2a5a] transition-colors">Success criteria</span>
+                            <span class="font-semibold text-[#5b4a85] group-hover:text-[#3a2a5a] transition-colors">Related Success criteria</span>
                             <span class="text-xl text-[#7653e7] transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true">→</span>
                         </div>
                     </a>
@@ -58,8 +52,7 @@
 
                 <!-- Design Patterns -->
                 <div class="rounded-lg bg-gradient-to-r from-[#d4008f] via-[#7653e7] to-[#2f8ee5] p-[1px] transition-all duration-200 hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-md">
-                    <a href="{{ route('design-pattern')
-                    }}"
+                    <a href="{{ route('design-pattern')}}"
                     class="group block rounded-[calc(0.5rem-1.5px)] bg-white p-5 transition-colors">
                         <div class="flex items-center justify-between">
                             <span class="font-semibold text-[#5b4a85] group-hover:text-[#3a2a5a] transition-colors">Design patterns</span>

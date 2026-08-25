@@ -5,7 +5,7 @@
 @section('content')
     @php $principleColors = collect($principles)->keyBy('code'); @endphp
     <div class="content-shell">
-        <x-page-header title="Design Guidelines" eyebrow="From principles to design direction" icon="compasso-viola.png"  />
+        <x-page-header title="Design Guidelines" eyebrow="From principles to design direction" icon="compasso-viola.png" />
 
         <div class="mt-8 grid gap-6 lg:grid-cols-[210px_minmax(0,1fr)]">
             <aside class="surface-card h-fit p-4" aria-label="Guideline filters">
@@ -39,14 +39,14 @@
                                         @endphp
                                         @if ($slug)
                                             <a href="{{ route('principles.show', ['principle' => $slug]) }}"
-                                            class="inline-block rounded-md px-2 py-1 text-[10px] font-semibold no-underline transition hover:opacity-80 hover:shadow-sm"
-                                            style="background-color: {{ $color }}"
-                                            title="Vai al principio {{ $principle['name'] ?? $code }}">
+                                               class="inline-block rounded-md px-2 py-1 text-[10px] font-semibold no-underline transition hover:opacity-80 hover:shadow-sm"
+                                               style="background-color: {{ $color }}"
+                                               title="Go to {{ $principle['name'] ?? $code }}">
                                                 {{ $code }}
                                             </a>
                                         @else
                                             <span class="inline-block rounded-md px-2 py-1 text-[10px] font-semibold"
-                                                style="background-color: {{ $color }}">
+                                                  style="background-color: {{ $color }}">
                                                 {{ $code }}
                                             </span>
                                         @endif
@@ -71,6 +71,7 @@
     <script>
         const guidelineButtons = [...document.querySelectorAll('[data-guideline-filter]')];
         const guidelineCards = [...document.querySelectorAll('[data-guideline]')];
+
         function filterGuidelines(selected) {
             let visible = 0;
             guidelineButtons.forEach((item) => {
@@ -79,14 +80,27 @@
                 item.classList.toggle('bg-black/5', active);
             });
             guidelineCards.forEach((card) => {
-                const show = selected === 'all' || card.dataset.principles.split(' ').includes(selected) || card.dataset.guideline === selected;
+                const show = selected === 'all' ||
+                            card.dataset.principles.split(' ').includes(selected) ||
+                            card.dataset.guideline === selected;
                 card.classList.toggle('hidden', !show);
                 if (show) visible++;
             });
             document.getElementById('guidelines-empty').classList.toggle('hidden', visible !== 0);
         }
+
         guidelineButtons.forEach((button) => button.addEventListener('click', () => filterGuidelines(button.dataset.guidelineFilter)));
-        const requestedGuideline = new URLSearchParams(window.location.search).get('guideline');
-        filterGuidelines(requestedGuideline && guidelineCards.some((card) => card.dataset.guideline === requestedGuideline) ? requestedGuideline : 'all');
+
+        const params = new URLSearchParams(window.location.search);
+        const requestedGuideline = params.get('guideline');
+        const requestedPrinciple = params.get('principle');
+
+        if (requestedPrinciple) {
+            filterGuidelines(requestedPrinciple);
+        } else if (requestedGuideline && guidelineCards.some((card) => card.dataset.guideline === requestedGuideline)) {
+            filterGuidelines(requestedGuideline);
+        } else {
+            filterGuidelines('all');
+        }
     </script>
 @endpush

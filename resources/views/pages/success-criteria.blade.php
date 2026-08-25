@@ -5,7 +5,7 @@
 @section('content')
     @php $principleColors = collect($principles)->keyBy('code'); @endphp
     <div class="content-shell">
-        <x-page-header title="Valutation Success Criteria" eyebrow="Verifiable evaluation conditions" icon="tape-viola.png"  />
+        <x-page-header title="Valutation Success Criteria" eyebrow="Verifiable evaluation conditions" icon="tape-viola.png" />
 
         <div class="mt-8 grid gap-6 lg:grid-cols-[210px_minmax(0,1fr)]">
             <aside class="surface-card h-fit p-4" aria-label="Success criteria filters">
@@ -23,7 +23,7 @@
                 @endforeach
                 <div class="my-4 h-px bg-black/10"></div>
                 <p class="mb-2 px-2 text-[10px] font-semibold uppercase tracking-wide text-[#888]">Guidelines</p>
-                <div class="grid gap-1">
+                <div class="flex flex-col space-y-0.5">
                     @foreach ($guidelines as $guideline)
                         <button type="button" class="filter-button" data-criterion-filter="{{ $guideline['code'] }}" aria-pressed="false">
                             <span class="flex h-8 w-9 shrink-0 items-center justify-center rounded-md border border-black/50 text-xs">{{ $guideline['code'] }}</span>
@@ -35,7 +35,7 @@
 
             <section>
                 <p class="max-w-3xl text-base leading-relaxed text-[#4d4d4d] sm:text-lg">The 16 Success Criteria are atomic, verifiable conditions used to assess whether a system satisfies the requirements of symbiotic artificial intelligence.</p>
-                <div class="mt-7 grid gap-4 ">
+                <div class="mt-7 grid gap-4">
                     @foreach ($criteria as $criterion)
                         <article class="surface-card overflow-hidden" data-criterion="{{ implode(' ', [...$criterion['principles'], $criterion['guideline']]) }}" data-code="{{ $criterion['code'] }}">
                             <button type="button" class="criterion-toggle flex w-full items-start gap-3 p-4 text-left" aria-expanded="false">
@@ -46,7 +46,6 @@
                             <div class="criterion-detail hidden border-t border-black/10 bg-[#fafafa] px-4 py-4">
                                 <p class="m-0 text-sm leading-relaxed text-[#4d4d4d]">{{ $criterion['description'] }}</p>
                                 <div class="mt-4 flex flex-wrap gap-2">
-
                                     @foreach ($criterion['principles'] as $code)
                                         @php
                                             $principle = $principleColors[$code] ?? null;
@@ -55,20 +54,19 @@
                                         @endphp
                                         @if ($slug)
                                             <a href="{{ route('principles.show', ['principle' => $slug]) }}"
-                                            class="inline-block rounded-md px-2 py-1 text-[10px] font-semibold no-underline transition hover:opacity-80 hover:shadow-sm"
-                                            style="background-color: {{ $color }}"
-                                            title="Vai al principio {{ $principle['name'] ?? $code }}">
+                                               class="inline-block rounded-md px-2 py-1 text-[10px] font-semibold no-underline transition hover:opacity-80 hover:shadow-sm"
+                                               style="background-color: {{ $color }}"
+                                               title="Go to {{ $principle['name'] ?? $code }}">
                                                 {{ $code }}
                                             </a>
                                         @else
                                             <span class="inline-block rounded-md px-2 py-1 text-[10px] font-semibold"
-                                                style="background-color: {{ $color }}">
+                                                  style="background-color: {{ $color }}">
                                                 {{ $code }}
                                             </span>
                                         @endif
                                     @endforeach
-
-                                    <a href="{{ route('guidelines', ['guideline' => $criterion['guideline']]) }}" class="rounded-md border border-black/40 px-2 py-1 text-[10px] font-semibold transition hover:border-[#7254b7] hover:bg-[#faf7ff]  ">{{ $criterion['guideline'] }}</a>
+                                    <a href="{{ route('guidelines', ['guideline' => $criterion['guideline']]) }}" class="rounded-md border border-black/40 px-2 py-1 text-[10px] font-semibold transition hover:border-[#7254b7] hover:bg-[#faf7ff]">{{ $criterion['guideline'] }}</a>
                                 </div>
                             </div>
                         </article>
@@ -91,8 +89,10 @@
                 button.querySelector('svg').classList.toggle('rotate-180', !isOpen);
             });
         });
+
         const criterionButtons = [...document.querySelectorAll('[data-criterion-filter]')];
         const criterionCards = [...document.querySelectorAll('[data-criterion]')];
+
         function filterCriteria(selected) {
             let visible = 0;
             criterionButtons.forEach((item) => {
@@ -107,17 +107,21 @@
             });
             document.getElementById('criteria-empty').classList.toggle('hidden', visible !== 0);
         }
+
         criterionButtons.forEach((button) => button.addEventListener('click', () => filterCriteria(button.dataset.criterionFilter)));
+
         const params = new URLSearchParams(window.location.search);
         const requestedCriterion = params.get('criterion');
         const requestedGuideline = params.get('guideline');
         const requestedPattern = params.get('pattern');
+        const requestedPrinciple = params.get('principle');
+
         if (requestedCriterion) {
             filterCriteria('all');
             const card = criterionCards.find((item) => item.dataset.code === requestedCriterion);
             if (card) {
                 card.querySelector('.criterion-toggle').click();
-                card.scrollIntoView({block: 'center'});
+                card.scrollIntoView({ block: 'center' });
             }
         } else if (requestedPattern) {
             const patterns = @json(config('framesai.design_patterns'));
@@ -129,6 +133,20 @@
                 if (show) visible++;
             });
             document.getElementById('criteria-empty').classList.toggle('hidden', visible !== 0);
+        } else if (requestedPrinciple) {
+            let visible = 0;
+            criterionCards.forEach((card) => {
+                const principles = card.dataset.criterion.split(' ');
+                const show = principles.includes(requestedPrinciple);
+                card.classList.toggle('hidden', !show);
+                if (show) visible++;
+            });
+            document.getElementById('criteria-empty').classList.toggle('hidden', visible !== 0);
+            criterionButtons.forEach((item) => {
+                const active = item.dataset.criterionFilter === requestedPrinciple;
+                item.setAttribute('aria-pressed', String(active));
+                item.classList.toggle('bg-black/5', active);
+            });
         } else {
             filterCriteria(requestedGuideline || 'all');
         }
