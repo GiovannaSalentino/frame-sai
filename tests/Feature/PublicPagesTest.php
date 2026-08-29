@@ -56,20 +56,31 @@ class PublicPagesTest extends TestCase
 
     public function test_back_links_point_to_the_expected_parent_pages(): void
     {
+        $jsBackLogic = 'window.history.length > 1 ? window.history.back()';
+        $fallbackLogic = 'window.location.href=\''.url('/').'\'';
+
         foreach (['/principles', '/guidelines', '/success-criteria', '/design-patterns'] as $page) {
             $this->get($page)
                 ->assertOk()
-                ->assertSee('href="'.url('/').'"', false);
+                ->assertSee($jsBackLogic, false)
+                ->assertSee($fallbackLogic, false);
         }
 
-        $this->get('/principles/transparency')
-            ->assertOk()
-            ->assertSee('href="'.url('/principles').'"', false);
+
+        foreach (config('framesai.principles') as $principle) {
+
+            $this->get('/principles/'.$principle['slug'])
+                ->assertOk()
+                ->assertSee($jsBackLogic, false)
+                ->assertSee($fallbackLogic, false);
+        }
+
 
         foreach (array_keys(config('framesai.design_patterns')) as $pattern) {
             $this->get('/design-patterns/'.$pattern)
                 ->assertOk()
-                ->assertSee('href="'.url('/design-patterns').'"', false);
+                ->assertSee($jsBackLogic, false)
+                ->assertSee($fallbackLogic, false);
         }
     }
 
@@ -95,4 +106,78 @@ class PublicPagesTest extends TestCase
         $this->get('/library-principles')->assertRedirect('/principles');
         $this->get('/design-pattern')->assertRedirect('/design-patterns');
     }
+
+
+      public function test_navigation_menu_is_present_on_all_pages(): void
+    {
+
+        $menuMapping = [
+            '/'                       => 'home',
+            '/principles'             => 'principles',
+            '/guidelines'             => 'guidelines',
+            '/success-criteria'       => 'success-criteria',
+            '/design-patterns'        => 'design-patterns',
+        ];
+
+
+        foreach (config('framesai.principles') as $principle) {
+            $menuMapping['/principles/'.$principle['slug']] = 'principles';
+        }
+
+        foreach (array_keys(config('framesai.design_patterns')) as $pattern) {
+            $menuMapping['/design-patterns/'.$pattern] = 'design-patterns';
+        }
+
+        foreach ($menuMapping as $url => $expectedActiveKey) {
+            $response = $this->get($url);
+            $response->assertOk();
+
+
+            $response->assertSee('class="sticky top-0 mt-5 z-30 flex w-full shrink-0 flex-col items-stretch bg-white px-3 py-3 lg:fixed lg:inset-y-0 lg:left-0 lg:h-screen lg:w-[132px] lg:items-center lg:overflow-hidden lg:px-2 lg:py-3 lg:border-r lg:border-gray-200"', false);
+            $response->assertSee('aria-label="Primary navigation"', false);
+
+            $response->assertSee('href="'.route('home').'"', false);
+            $response->assertSee('aria-label="FrameSAI homepage"', false);
+            $response->assertSee('src="'.asset('img/group.png').'"', false);
+
+
+            $response->assertSee('aria-label="Main sections"', false);
+
+            $expectedItems = [
+                'Homepage'          => route('home'),
+                'Principles'        => route('library-principles'),
+                'Guidelines'        => route('guidelines'),
+                'Success Criteria'  => route('success-criteria'),
+                'Design Patterns'   => route('design-pattern'),
+            ];
+
+            foreach ($expectedItems as $label => $href) {
+
+                $response->assertSee('href="'.$href.'"', false);
+                $response->assertSee($label);
+            }
+
+
+            $icons = ['homepage.png', 'principles.png', 'guidelines.png', 'success-criteria.png', 'design-pattern.png'];
+            foreach ($icons as $icon) {
+                $response->assertSee('src="'.asset('img/'.$icon).'"', false);
+
+                $response->assertSee('class="pointer-events-none h-8 w-8 object-contain lg:h-12 lg:w-12 invert"', false);
+            }
+
+
+            $activeIndex = array_search($expectedActiveKey, array_keys($menuMapping));
+
+            $menuKeys = ['home', 'principles', 'guidelines', 'success-criteria', 'design-patterns'];
+            foreach ($menuKeys as $key) {
+                if ($key === $expectedActiveKey) {
+                    $response->assertSee('aria-current="page"', false);
+                    $response->assertSee('class="flex h-[64px] min-w-0 flex-col items-center justify-center gap-1 rounded-lg px-1 text-gray-900 transition hover:bg-black/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#73cfff] lg:h-[78px] lg:w-full bg-black/10"', false);
+                } else {
+
+                }
+            }
+        }
+    }
 }
+
