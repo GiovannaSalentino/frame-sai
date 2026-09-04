@@ -62,55 +62,46 @@ return [
     'success_criteria' => [
         'SC 1.1' => [
             'title' => 'The AI system shows the output with a clear explanation of its meaning and relevance to the task.',
-            'description' => 'The explanation must be understandable to humans through comprehensible, well-written text and/or images that clearly show the artifact.',
             'principles' => ['P1', 'P3'],
             'guideline' => 'G2',
         ],
         'SC 1.2' => [
             'title' => 'The AI system provides an explanation that matches the context of use.',
-            'description' => 'The explanation must be consistent with the real-world scenario in which the system is used.',
             'principles' => ['P1', 'P3'],
             'guideline' => 'G2',
         ],
         'SC 1.3' => [
             'title' => 'The AI system provides an explanation intended for the specified category of users.',
-            'description' => 'The form, language and level of detail of the explanation must suit the audience for which the system is intended.',
             'principles' => ['P1', 'P3'],
             'guideline' => 'G2',
         ],
         'SC 2.1' => [
             'title' => 'The AI output is accompanied by the corresponding confidence level.',
-            'description' => 'The interface communicates how confident the model is in the generated output.',
             'principles' => ['P2', 'P3'],
             'guideline' => 'G7',
         ],
         'SC 2.2' => [
             'title' => 'The AI output can be validated by the user with respect to the confidence level.',
-            'description' => 'Users can assess and confirm or contest an output while considering the confidence communicated by the model.',
             'principles' => ['P2', 'P3'],
             'guideline' => 'G7',
         ],
         'SC 3.1' => [
             'title' => 'The AI system shows the explanation corresponding to the model’s decision-making process.',
-            'description' => 'The explanation makes the reasoning that led to the decision inspectable by the user.',
             'principles' => ['P1', 'P3'],
             'guideline' => 'G1',
         ],
         'SC 3.2' => [
             'title' => 'The AI system highlights the features that impact the AI decision.',
-            'description' => 'The interface identifies the data or characteristics that most influenced the generated decision.',
             'principles' => ['P1', 'P3'],
             'guideline' => 'G1',
         ],
         'SC 3.3' => [
             'title' => 'The AI system provides both textual and visual explanations in high-risk contexts.',
-            'description' => 'When users need an overall and detailed view of the decision-making process, complementary explanation formats are available.',
             'principles' => ['P1', 'P3'],
             'guideline' => 'G1',
         ],
         'SC 4.1' => [
             'title' => 'The AI system includes an interface with granular control options.',
-            'description' => 'Controls may include starting or stopping processes and adjusting relevant parameters.',
             'principles' => ['P1', 'P3'],
             'guideline' => 'G3',
         ],
@@ -122,37 +113,32 @@ return [
         ],
         'SC 5.1' => [
             'title' => 'The AI system provides feedback loops for iterative refinement.',
-            'description' => 'Users can progressively refine the system’s performance and behavior through interaction.',
             'principles' => ['P1','P2', 'P4'],
             'guideline' => 'G4',
         ],
         'SC 5.2' => [
             'title' => 'The AI system is not provided with personal data unless it is relevant to its functioning.',
-            'description' => 'Personal information is excluded from inputs when it is not necessary for the foundational operation of the system.',
             'principles' => ['P1','P2', 'P4'],
             'guideline' => 'G4',
         ],
         'SC 5.3' => [
             'title' => 'Humans provide input types consistent with the AI system requirements.',
-            'description' => 'The interface guides input so that inconsistent data does not produce incorrect outputs.',
             'principles' => ['P1','P2', 'P4'],
             'guideline' => 'G4',
         ],
         'SC 5.4' => [
             'title' => 'The AI system asks users to double-check potentially harmful corrections.',
-            'description' => 'A warning is shown when a correction differs substantially from the system suggestion or may cause harm.',
             'principles' => ['P1','P2', 'P4'],
             'guideline' => 'G4',
         ],
         'SC 5.5' => [
             'title' => 'The AI model can be reconfigured only after an ethical compliance test is passed.',
-            'description' => 'Before deployment, the system verifies alignment with established ethical guidelines and regulations such as the AI Act and GDPR.',
+
             'principles' => ['P1','P2', 'P4'],
             'guideline' => 'G4',
         ],
         'SC 5.6' => [
             'title' => 'The AI system embeds ethical guidelines into reconfiguration workflows.',
-            'description' => 'Checklists or rule-based constraints make ethical requirements part of the reconfiguration process.',
             'principles' => ['P1','P2', 'P4'],
             'guideline' => 'G4',
         ],
