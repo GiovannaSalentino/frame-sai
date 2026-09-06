@@ -11,7 +11,6 @@ class DesignPatternsLibraryPageTest extends TestCase
         $response = $this->get('/design-patterns');
 
         $response->assertSee('Design Pattern Library');
-        $response->assertSee('Reusable interaction solutions');
     }
 
     public function test_design_patterns_page_shows_banner(): void

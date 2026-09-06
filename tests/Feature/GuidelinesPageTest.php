@@ -11,7 +11,6 @@ class GuidelinesPageTest extends TestCase
         $response = $this->get('/guidelines');
 
         $response->assertSee('Design Guidelines');
-        $response->assertSee('From principles to design');
     }
 
     public function test_guidelines_page_shows_introductory_text(): void

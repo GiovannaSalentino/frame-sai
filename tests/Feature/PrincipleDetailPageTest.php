@@ -13,7 +13,6 @@ class PrincipleDetailPageTest extends TestCase
 
             // Usa 'name' invece di 'title'
             $response->assertSee($principle['name']);
-            $response->assertSee('Framework principle');
         }
     }
 

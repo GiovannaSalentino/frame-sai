@@ -10,8 +10,7 @@ class HomePageTest extends TestCase
     {
         $response = $this->get('/');
 
-        $response->assertSee('Symbiotic Artificial Intelligence');
-        $response->assertSee('A ');              
+        $response->assertSee('A ');
         $response->assertSee('Toolkit');
         $response->assertSee(' to Create Symbiotic AI Sistem');
         $response->assertSee('A design framework that translates responsible AI principles into guidelines');

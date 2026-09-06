@@ -9,9 +9,7 @@ class LibraryPrinciplesPageTest extends TestCase
     public function test_principles_page_shows_header(): void
     {
         $response = $this->get('/principles');
-
         $response->assertSee('Library of Principles');
-        $response->assertSee('Framework foundations');
     }
 
     public function test_principles_page_shows_introductory_text(): void

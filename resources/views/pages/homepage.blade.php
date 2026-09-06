@@ -8,7 +8,6 @@
     <div class="content-shell flex min-h-[calc(100vh-72px)] items-center lg:min-h-screen">
         <section class="grid w-full items-center gap-10 py-8 md:grid-cols-[1.05fr_0.95fr] lg:py-14">
             <div class="max-w-2xl">
-                <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-[#765b9c]">Symbiotic Artificial Intelligence</p>
                 <h1 class="m-0 text-5xl leading-none sm:text-6xl mb-4 text-[#3a3a3a]">A
                     <span class="font-semibold bg-gradient-to-r from-[#d4008f] via-[#7653e7] to-[#2f8ee5] bg-clip-text text-transparent">
                         Toolkit

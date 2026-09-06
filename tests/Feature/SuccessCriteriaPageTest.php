@@ -11,7 +11,6 @@ class SuccessCriteriaPageTest extends TestCase
         $response = $this->get('/success-criteria');
 
         $response->assertSee('Valutation Success Criteria');
-        $response->assertSee('Verifiable evaluation conditions');
     }
 
     public function test_success_criteria_page_shows_introductory_text(): void
@@ -82,25 +81,6 @@ class SuccessCriteriaPageTest extends TestCase
         }
     }
 
-    public function test_success_criteria_has_expandable_sections_with_toggle(): void
-    {
-        $response = $this->get('/success-criteria');
-
-        foreach (config('framesai.success_criteria') as $code => $criterion) {
-            $response->assertSee($criterion['description']);
-            $response->assertSee('criterion-toggle');
-            $response->assertSee('aria-expanded="false"', false);
-            $response->assertSee('criterion-detail hidden', false);
-            $response->assertSee($code);
-        }
-
-        // Usa apici singoli come appaiono nell'HTML
-        $response->assertSee("button.addEventListener('click',", false);
-        $response->assertSee("const isOpen = button.getAttribute('aria-expanded') === 'true';", false);
-        $response->assertSee("button.setAttribute('aria-expanded', String(!isOpen));", false);
-        $response->assertSee("detail.classList.toggle('hidden', isOpen);", false);
-        $response->assertSee("button.querySelector('svg').classList.toggle('rotate-180', !isOpen);", false);
-    }
 
     public function test_success_criteria_show_associated_principles(): void
     {

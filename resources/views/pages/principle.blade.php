@@ -6,7 +6,6 @@
     <div class="content-shell">
         <x-page-header
             :title="$principle['title']"
-            eyebrow="Framework principle"
             icon="brick-viola.png"
         />
 

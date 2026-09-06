@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="content-shell max-w-[1165px]">
-        <x-page-header title="Design Pattern Library" eyebrow="Reusable interaction solutions" icon="carta-viola.png"  />
+        <x-page-header title="Design Pattern Library"  icon="carta-viola.png"  />
 
         <div class="mt-8 grid gap-4 lg:grid-cols-[210px_minmax(0,1fr)]">
             <aside class="surface-card h-fit p-3" aria-label="Pattern filters">

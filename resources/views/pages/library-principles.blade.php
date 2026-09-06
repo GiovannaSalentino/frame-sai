@@ -6,7 +6,6 @@
     <div class="content-shell">
         <x-page-header
             title="Library of Principles"
-            eyebrow="Framework foundations"
             icon="brick-viola.png"
         />
 
