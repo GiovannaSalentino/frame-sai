@@ -14,9 +14,8 @@
                     </span>
                     to Create Symbiotic AI Sistem
                 </h1>
-                <p class="mt-6 max-w-xl text-lg leading-relaxed text-[#4d4d4d] sm:text-xl">
-                    A design framework that translates responsible AI principles into guidelines,
-                    measurable success criteria and reusable interaction patterns.
+                <p class="mt-6 max-w-xl text-lg leading-relaxed text-[#4d4d4d] sm:text-l">
+                    A design framework that translates the Principles of Symbiotic AI into Guidelines, Success Criteria and Design Patterns.
                 </p>
 
                 <dl class="mt-10 grid max-w-xl grid-cols-2 gap-3 sm:grid-cols-4">
