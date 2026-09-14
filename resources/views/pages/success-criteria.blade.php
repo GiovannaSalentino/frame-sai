@@ -110,7 +110,18 @@
             document.getElementById('criteria-empty').classList.toggle('hidden', visible !== 0);
         }
 
-        criterionButtons.forEach((button) => button.addEventListener('click', () => filterCriteria(button.dataset.criterionFilter)));
+        
+        criterionButtons.forEach((button) => button.addEventListener('click', () => {
+            const clicked = button.dataset.criterionFilter;
+            const isActive = button.getAttribute('aria-pressed') === 'true';
+
+            if (clicked === 'all') {
+                filterCriteria('all');
+                return;
+            }
+
+            filterCriteria(isActive ? 'all' : clicked);
+        }));
 
         const params = new URLSearchParams(window.location.search);
         const requestedCriterion = params.get('criterion');

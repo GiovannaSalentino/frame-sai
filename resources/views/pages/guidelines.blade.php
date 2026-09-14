@@ -88,8 +88,17 @@
             });
             document.getElementById('guidelines-empty').classList.toggle('hidden', visible !== 0);
         }
+        guidelineButtons.forEach((button) => button.addEventListener('click', () => {
+            const clicked = button.dataset.guidelineFilter;
+            const isActive = button.getAttribute('aria-pressed') === 'true';
 
-        guidelineButtons.forEach((button) => button.addEventListener('click', () => filterGuidelines(button.dataset.guidelineFilter)));
+            if (clicked === 'all') {
+                filterGuidelines('all');
+                return;
+            }
+
+            filterGuidelines(isActive ? 'all' : clicked);
+        }));
 
         const params = new URLSearchParams(window.location.search);
         const requestedGuideline = params.get('guideline');

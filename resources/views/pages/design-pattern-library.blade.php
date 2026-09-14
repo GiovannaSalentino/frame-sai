@@ -85,7 +85,19 @@
             });
             document.getElementById('patterns-empty').classList.toggle('hidden', visible !== 0);
         }
-        patternButtons.forEach((button) => button.addEventListener('click', () => filterPatterns(button.dataset.patternFilter)));
+
+        patternButtons.forEach((button) => button.addEventListener('click', () => {
+            const clicked = button.dataset.patternFilter;
+            const isActive = button.getAttribute('aria-pressed') === 'true';
+
+            if (clicked === 'all') {
+                filterPatterns('all');
+                return;
+            }
+
+            filterPatterns(isActive ? 'all' : clicked);
+        }));
+
         const initialGuideline = new URLSearchParams(window.location.search).get('guideline');
         filterPatterns(patternButtons.some((button) => button.dataset.patternFilter === initialGuideline) ? initialGuideline : 'all');
     </script>

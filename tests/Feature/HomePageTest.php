@@ -12,7 +12,7 @@ class HomePageTest extends TestCase
 
         $response->assertSee('A ');
         $response->assertSee('Toolkit');
-        $response->assertSee(' to Create Symbiotic AI Sistem');
+        $response->assertSee(' to Create Symbiotic AI System');
         $response->assertSee('A design framework that translates the Principles of Symbiotic AI into Guidelines, Success Criteria and Design Patterns.');
     }
 
