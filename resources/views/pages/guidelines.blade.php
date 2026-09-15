@@ -9,7 +9,7 @@
 
         <div class="mt-8 grid gap-6 lg:grid-cols-[210px_minmax(0,1fr)]">
             <aside class="surface-card h-fit p-4" aria-label="Guideline filters">
-                <button type="button" class="filter-button bg-black/5" data-guideline-filter="all" aria-pressed="true">
+                <button type="button" class="filter-button " data-guideline-filter="all" aria-pressed="true">
                     <span class="flex h-8 w-10 items-center justify-center rounded-md bg-[#4d4d4d] text-xs text-white">All</span>
                     <span><strong class="block text-sm font-medium">All Guidelines</strong><small class="text-[#777]">{{ count($guidelines) }} available</small></span>
                 </button>
@@ -77,7 +77,7 @@
             guidelineButtons.forEach((item) => {
                 const active = item.dataset.guidelineFilter === selected;
                 item.setAttribute('aria-pressed', String(active));
-                item.classList.toggle('bg-black/5', active);
+                item.classList.toggle('is-active', active);
             });
             guidelineCards.forEach((card) => {
                 const show = selected === 'all' ||

@@ -9,7 +9,7 @@
 
         <div class="mt-8 grid gap-6 lg:grid-cols-[210px_minmax(0,1fr)]">
             <aside class="surface-card h-fit p-4" aria-label="Success criteria filters">
-                <button type="button" class="filter-button bg-black/5" data-criterion-filter="all" aria-pressed="true">
+                <button type="button" class="filter-button " data-criterion-filter="all" aria-pressed="true">
                     <span class="flex h-8 min-w-10 items-center justify-center rounded-md bg-[#32834b] px-2 text-xs text-white">All</span>
                     <span><strong class="block text-sm font-medium">All criteria</strong><small class="text-[#777]">{{ count($criteria) }} available</small></span>
                 </button>
@@ -100,7 +100,7 @@
             criterionButtons.forEach((item) => {
                 const active = item.dataset.criterionFilter === selected;
                 item.setAttribute('aria-pressed', String(active));
-                item.classList.toggle('bg-black/5', active);
+                item.classList.toggle('is-active', active);
             });
             criterionCards.forEach((card) => {
                 const show = selected === 'all' || card.dataset.criterion.split(' ').includes(selected);
@@ -110,7 +110,7 @@
             document.getElementById('criteria-empty').classList.toggle('hidden', visible !== 0);
         }
 
-        
+
         criterionButtons.forEach((button) => button.addEventListener('click', () => {
             const clicked = button.dataset.criterionFilter;
             const isActive = button.getAttribute('aria-pressed') === 'true';
@@ -157,7 +157,7 @@
             criterionButtons.forEach((item) => {
                 const active = item.dataset.criterionFilter === requestedPrinciple;
                 item.setAttribute('aria-pressed', String(active));
-                item.classList.toggle('bg-black/5', active);
+                item.classList.toggle('is-active', active);
             });
         } else {
             filterCriteria(requestedGuideline || 'all');

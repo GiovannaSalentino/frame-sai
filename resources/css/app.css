@@ -37,4 +37,42 @@
     .filter-button {
         @apply flex w-full items-center gap-3 rounded-lg px-2 py-2 text-left transition hover:bg-black/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5b65d8];
     }
+
+
+    .filter-button {
+            @apply flex w-full items-center gap-3 rounded-lg px-2 py-2 text-left transition hover:bg-black/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5b65d8];
+            position: relative;
+        }
+
+
+        .filter-button.is-active::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            padding: 1.5px;
+            background: linear-gradient(
+                135deg,
+                #2f8ee5 0%,
+                #7653e7 33%,
+                #a96bc8 66%,
+                #d4008f 100%
+            );
+
+            -webkit-mask:
+                linear-gradient(#fff 0 0) content-box,
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+                    mask-composite: exclude;
+            pointer-events: none;
+        }
+
+       
+        @supports not (mask-composite: exclude) {
+            .filter-button.is-active {
+                box-shadow: 0 0 0 2px #7653e7;
+            }
+        }
+
+
 }
