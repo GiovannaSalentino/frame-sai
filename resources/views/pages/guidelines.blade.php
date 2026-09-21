@@ -14,6 +14,7 @@
                     <span><strong class="block text-sm font-medium">All Guidelines</strong><small class="text-[#777]">{{ count($guidelines) }} available</small></span>
                 </button>
                 <div class="my-4 h-px bg-black/10"></div>
+                <p class="mb-2 px-2 text-[10px] font-semibold uppercase tracking-wide text-[#888]">Principles</p>
                 @foreach ($principles as $principle)
                     <button type="button" class="filter-button" data-guideline-filter="{{ $principle['code'] }}" aria-pressed="false">
                         <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-md text-xs" style="background-color: {{ $principle['color'] }}">{{ $principle['code'] }}</span>

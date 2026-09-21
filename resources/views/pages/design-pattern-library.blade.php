@@ -9,7 +9,7 @@
         <div class="mt-8 grid gap-4 lg:grid-cols-[210px_minmax(0,1fr)]">
             <aside class="surface-card h-fit p-3" aria-label="Pattern filters">
                 <button type="button" class="filter-button " data-pattern-filter="all" aria-pressed="true">
-                    <span class="flex h-8 min-w-10 items-center justify-center rounded-md bg-[#4d4d4d] px-2 text-xs text-white">All</span>
+                    <span class="flex h-8 min-w-10 items-center justify-center rounded-md bg-[#7b52ab] px-2 text-xs text-white">All</span>
                     <span><strong class="block text-sm">All patterns</strong><small class="text-[#777]">{{ count($patterns) }} available</small></span>
                 </button>
                 <div class="my-3 h-px bg-black/10"></div>

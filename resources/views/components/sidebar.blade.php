@@ -40,7 +40,7 @@
     <a
         href="{{ route('home') }}"
         class="relative mb-2 h-16 w-16 shrink-0 self-start overflow-hidden rounded-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#73cfff] lg:mb-0 lg:h-20 lg:w-20 lg:self-auto"
-        aria-label="FrameSAI homepage"
+        aria-label="Toolkit homepage"
     >
         <img src="{{ asset('img/group.png') }}" alt="" class="pointer-events-none absolute inset-0 h-full w-full scale-[1.6] object-contain">
     </a>
